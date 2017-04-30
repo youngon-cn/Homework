@@ -1,7 +1,7 @@
 # Homework
-站员作业
+> 站员作业
 
-### 结构目录
+### 目录结构
 例子:
 
   - 2015届 // 届别
@@ -23,5 +23,7 @@
   
   6.提交修改到远程库 `git push`
   
-  7.通过github网站发起pull request
-  
+  7.通过github网站发起pull request  
+
+### Git Flow（[详细介绍](http://www.ruanyifeng.com/blog/2015/12/git-workflow.html)）
+比较好的实践是在添加新的代码之前新建一个分支，待pr被合并后，删除之前建立的分支，这里为了简化流程，可以省去新建分支的步骤
