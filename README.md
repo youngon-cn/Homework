@@ -28,6 +28,6 @@
 
   7. 通过 github 网站发起 pull request
 
-  8. pull request 被合并后，切换回主分支 `git checkout master`，同时在 github 上删除掉被合并了的分支
+  8. 待 pull request 被合并后，切换回主分支 `git checkout master`，删除已被合并的分支 `git branch -d 'branch-name'`，同时在 github 上删除掉被合并了的分支
 
 ### Git Flow（[详细介绍](http://www.ruanyifeng.com/blog/2015/12/git-workflow.html)）
