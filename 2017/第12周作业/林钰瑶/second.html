@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>定时器</title>
+		<style>
+			#rectangle{width: 100px;height: 100px;position: absolute;background-color: rgba(24,42,6,.3);top: 50px;left: 30px;}
+		</style>
+	</head>
+	<body>
+		<input  id="1" type="button" value="左" />
+		<input id="2" type="button" value="右" />
+		<div id="rectangle"></div>
+	
+	<script>
+		var o1=document.getElementById('1');
+		var o2=document.getElementById('2');
+		var orec=document.getElementById('rectangle');
+		
+		o1.onclick=function(){
+			clearInterval(orec.timer);
+			
+			orec.timer=setInterval(function(){
+				var speed=parseInt(getStyle(orec,'left'))+ -12;
+				if(speed<10)
+				{speed=10;}
+				orec.style.left=speed+'px';
+				if(speed==10){
+					clearInterval(orec.timer);
+				}
+			},30;)
+			
+		}
+		
+		o2.onclick=function(){
+			clearInterval(orec.timer);
+			
+			orec.timer=setInterval(function(){
+				var speed=parseInt(getStyle(orec,'left'))+ 12;
+				if(speed>800)
+				{speed=800;}
+				orec.style.left=speed+'px';
+				if(speed==800){
+					clearInterval(orec.timer);
+				}
+			},30);
+		
+		function getStyle ( obj, attr ) { return obj.currentStyle?obj.currentStyle[attr] : getComputedStyle( obj )[attr]; }
+		}
+	</script>
+	</body>
+</html>
