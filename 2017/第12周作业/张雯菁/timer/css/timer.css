@@ -1,0 +1,8 @@
+#square{
+	width: 100px;
+	height: 100px;
+	background: red;
+	position: absolute;
+	top: 50px;
+	left: 20px;
+}
