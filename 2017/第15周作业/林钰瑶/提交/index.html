@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html> 
+   <head> 
+	<meta charset="UTF-8">
+    <title>jQuery Ajax 实例演示</title> 
+</head> 
+
+<script type="text/javascript"> 
+$(document).ready(function(){
+       $("#button_login").mousedown(function(){ 
+          login(); 
+        }); 
+}); 
+function login(){  
+    var username = $("#username").val();
+    var password = $("#password").val();
+    $.ajax({
+       type: "post",  
+       url : "login.php",
+       dataType:'json',
+       data: 'username='+username+'&password='+password, 
+       success: function(json){
+           $('#result').html("姓名:" + json.username + "<br/>密码:" + json.password);  
+        } 
+    }); 
+    $('#test_post').mousedown(function (){ 
+        $.post( 
+        'login.php', 
+        {
+           username:$('#username').val(), 
+           password:$('#password').val() 
+        }, 
+        function (data) { 
+           var myjson=''; 
+           eval('myjson=' + data + ';'); 
+           $('#result').html("姓名1:" + myjson.username + "<br/>密码1:" + myjson.password); 
+        }); 
+    }); 
+    $('#test_get').mousedown(function (){ 
+       $.get( 
+       'login.php', 
+       { 
+           username:$('#username').val(), 
+           password:$('#password').val() 
+        }, 
+        function(data){ 
+           var myjson=''; 
+           eval("myjson=" + data + ";"); 
+           $('#result').html("姓名2:" + myjson.username + "<br/>密码2:" + myjson.password); 
+        }); 
+    }); 
+} 
+</script> 
+<body> 
+   <div id="result" style="background:#3a4d51;width:300px;height:200px;"></div> 
+   <form id="formtest" action="" method="post"> 
+      <p><span>输入姓名:</span><input type="text" name="username" id="username" /></p> 
+      <p><span>输入密码:</span><input type="text" name="password" id="password" /></p> 
+   </form> 
+   <button id="button_login">提交</button> 
+   <button id="test_post">提交</button> 
+   <button id="test_get">提交</button> 
+</body> 
+</html> 
