@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css " href="css/index.css" />
+	</head>
+	<body>
+
+<div id="all">
+	<div id="top">
+		<div id="top_1">
+			<ul>
+				<li class="top_2"><a href="#" >大学考试</a></li>
+				<li><a href="#" >小学辅导</a></li>
+				<li><a href="#" >出国留学</a></li>
+				<li><a href="#" >中学辅导</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="buttom">
+		<div >
+			<li>
+				<img src="img/english.jpg">
+				<p><a href="#" >一年级语文读写表达秋季班</a></p>
+			</li>
+			
+			<li>
+				<img src="img/english.jpg">
+				<p><a href="#" >一年级语文读写表达秋季班</a></p>
+			</li>
+			
+			<li><img src="img/english.jpg"></a></li>
+			<li><img src="img/english.jpg"></a></li>
+		</div>
+		<div class="gg">
+			<li>
+				<img src="img/1.jpg">
+				<p><a href="#" >一年级语文读写表达秋季班</a></p>
+			</li>
+			<li>
+				<img src="img/1.jpg">
+				<p><a href="#" >一年级语文读写表达秋季班</a></p>
+			</li>
+			<li><a href="#" ><img src="img/1.jpg"></a></li>
+			<li><a href="#" ><img src="img/1.jpg"></a></li>
+		</div>
+</div>
+
+<div id="all_1">
+	<div id="ipictur">
+		<ul class="tphoto">
+			<li class="en"><img src="img/image_1.jpg"></li>
+			<li class="en"><img src="img/pecture.jpg"></li>
+			<li class="en"><img src="img/photograph.jpg"></li>
+		</ul>
+	</div>
+</div>
+
+
+
+
+<script type="text/javascript">  
+
+
+	window.onload=function(){
+		var photo=document.getElementById("top_1");
+		var photo_1=photo.getElementsByTagName("li");
+		var aa=document.getElementById("buttom");
+	    var aa_1=aa.getElementsByTagName("div");
+
+			//photo_1[i].index=i;	
+	
+			for(var i=0;i<photo_1.length;i++){
+				a(aa_1,photo_1,i);
+			}
+	}
+function a(aa_1,photo_1,i){
+
+	photo_1[i].onmousemove=function(){
+				for(var n=0;n<photo_1.length;n++)
+				{
+				photo_1[n].className="";
+				}
+				photo_1[i].className="top_2";
+				for(var j=0;j<aa_1.length;j++)
+				{
+				 aa_1[j].className="gg"
+				}
+				 aa_1[i].className="hh";
+				 		
+	}	
+}
+   var pian=document.querySelector(".tphoto");
+   var cc=document.getElementsByClassName("en");
+   var pp=pian.getElementsByTagName("li");
+   var k=0;
+   var h=3;
+	function tu(){
+	   if(k==2){
+		 while(h>0){
+		 	h--;
+		 	pp[h].className="en";
+		 }
+		  k==0;
+		 }
+		 else{
+		 pp[k].className="f";
+		 k++;
+	}
+}
+	  setInterval("tu()",1000);
+	
+</script>
+	</body>
+</html>
