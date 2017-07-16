@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8" />
+		<title>打地鼠游戏</title>
+		<style>
+			* {
+				margin: 0px;
+				padding: 0px;
+			}
+			h2 {
+				font-family: "微软雅黑";
+				font-size: 30px;
+				padding-left: 100px;
+			}
+			table td {
+				width: 100px;
+				height: 100px;
+			}
+			
+			img {
+				margin-top: 31px;
+			}
+			
+			#content {
+				z-index: 1;
+				margin-left: 40%;
+			}
+			
+			#count {
+				width: 320px;
+				height: 40px;
+				background-color: #E8E8E8;
+				padding-left: 0px;
+				text-align: center;
+				color: red;
+				font-size: 18px;
+				line-height: 30px;
+				font-family: "微软雅黑";
+			}
+			
+			#count .score {
+				text-align: center;
+				color: lightgreen;
+				font-size: 20px;
+				line-height: 30px;
+				font-family: "微软雅黑";
+			}
+			
+			#history #score1 {
+				text-align: center;
+				color: lightgreen;
+				font-size: 20px;
+				line-height: 30px;
+				font-family: "微软雅黑";
+			}
+			
+			#history {
+				position: absolute;
+				top: 60px;
+				right: 240px;
+				width: 180px;
+				height: 90px;
+				background-color: #E8E8E8;
+				color: lightblue;
+				font-size: 20px;
+				line-height: 80px;
+				text-align: center;
+			}
+			
+			.clock {
+				position: absolute;
+				top: 0px;
+				right: 240px;
+				width: 180px;
+				height: 60px;
+				background-color: lightblue;
+				color: red;
+				font-size: 20px;
+				text-align: center;
+				line-height: 60px;
+			}
+			
+			#cover {
+				width: 800px;
+				height: 600px;
+				margin-top: 0px;
+				position: absolute;
+				z-index: 2;
+				top: 0px;
+				left: 0px;
+				right: 0px;
+				bottom: 0px;
+				margin: auto;
+				background: rgba(100, 100, 100, 0.5);
+				color: red;
+				font-size: 30px;
+				text-align: center;
+				vertical-align: middle;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div id="content">
+			<h2>打地鼠</h2><br/>
+			<table id="mouse">
+
+				<tr>
+					<td><img src="img/grass.jpg"></td>
+					<td><img src="img/grass.jpg"></td>
+					<td><img src="img/grass.jpg"></td>
+				</tr>
+
+				<tr>
+					<td><img src="img/grass.jpg"></td>
+					<td><img src="img/grass.jpg"></td>
+					<td><img src="img/grass.jpg"></td>
+				</tr>
+
+				<tr>
+					<td><img src="img/grass.jpg"></td>
+					<td><img src="img/grass.jpg"></td>
+					<td><img src="img/grass.jpg"></td>
+				</tr>
+			</table>
+			<div id="count">当前得分 ：<span class="score"> 0 </span>分</div>
+			<!--<div id="history">最佳记录: <span id="score1"> 0 </span>分</div>-->
+			<div class="clock"></div>
+	</div>
+		<div id="cover" style="display:none"> <span id="text"></span></div>
+		<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+		<script>
+			
+			var content = document.getElementById('content');
+			var cover = document.getElementById('cover');
+			var image = document.getElementsByTagName('img');
+			var countMouse = document.getElementById('count');
+			var score = countMouse.querySelector(".score");
+			var history = document.getElementById("history");
+			var score1 = document.getElementById("score1");
+			var div = document.querySelector(".clock");
+			var text = document.getElementById("text");
+			//var preScore = 0;
+			var ranK;
+			var count = 0;
+			
+			//让老鼠随机出现在一个坑里
+			setTimeout("out()", Math.random() * 400 + 800);
+
+			function out() {
+				try {
+					ranK = Math.floor(Math.random() * 9);
+					image[ranK].src = "img/mouse.jpg";
+					image[ranK].style.marginTop = "0px";
+					image[ranK].setAttribute("onclick", "die()");
+					setTimeout("escape()", Math.random() * 400 + 800);
+				} catch(ex) {}
+			}
+			// 老鼠回去了
+			function escape() {
+				try {
+					image[ranK].src = "img/grass.jpg";
+					image[ranK].style.marginTop = "31px";
+					setTimeout("out()", Math.random() * 400 + 800);
+				} catch(ex) {}
+			}
+			
+			//3老鼠被打死了
+			function die() {
+				try {
+					image[ranK].onclick=function(){
+						image[ranK].src ="img/cha.jpg";
+					}
+					count++;
+					score.innerHTML = count;				
+				} catch(ex) {
+
+				}
+			}
+
+			//定时器
+			var seconds = 59;
+			var speed = 1000;
+
+			function countDown(seconds, speed) {
+				var txt = "剩余时间：" + ((seconds < 10) ? "0" + seconds : seconds) + "秒";
+				div.innerHTML = txt;
+				var timeId = setTimeout("countDown(seconds--,speed)", speed);
+				if(seconds == 0) {
+					
+
+					clearTimeout(timeId);
+					if(cover.style.display == "none") {
+						cover.style.display = "block";
+						if(count === undefined)
+							text.innerHTML = "当前成绩为：" + 0 + "分" + "<br/>" + "游戏结束！";
+                    	else
+							text.innerHTML = "当前成绩为：" + count + "分" + "<br/>" + "游戏结束！";
+					}
+				}
+			}
+			countDown(seconds, speed);
+		</script>
+	</body>
+</html> 
