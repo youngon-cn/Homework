@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8" />
+		<title>星级评分-第三种</title>
+		<style>
+               .wrap{
+                  position: relative;
+                  width: 80px;
+                  height: 16px;
+                  margin: 100px auto;
+                  overflow: hidden;
+               }
+               .rating{
+            	position: relative;
+            	width: 80px;
+            	height: 16px;
+            	background: url(img/rating.jpg) no-repeat;
+               }
+               .rating-item{
+            	position: absolute;
+            	top: 0;
+            	z-index: 3;
+            	width: 16px;
+            	height:16px;
+               }
+               .rating-item-1{
+            	left: 0;
+               }
+               .rating-item-2{
+            	left: 16px;
+               }
+               .rating-item-3{
+            	left: 32px;
+               }
+               .rating-item-4{
+            	left: 48px;
+               }
+               .rating-item-5{
+            	left: 64px;
+               }
+               .rating-item:hover{
+                left: 0;
+                z-index: 2;
+                width: 80px;
+                background: url(img/rating.jpg) no-repeat;
+               }
+               .rating-item-1:hover{
+            	background-position: 0 -16px;
+               }
+               .rating-item-2:hover{
+            	background-position: 0 -32px;
+               }
+               .rating-item-3:hover{
+            	background-position: 0 -48px;
+               }
+               .rating-item-4:hover{
+            	background-position: 0 -64px;
+               }
+               .rating-item-5:hover{
+            	background-position: 0 -80px;
+               }
+		</style>
+	</head>
+	<body>
+		<!--第三种实现方式 兼容IE6及以上浏览器-->
+         
+	     	<div class="wrap">
+                  <div class="rating">
+                       <a href="#rating-1" class="rating-item rating-item-1" title="很不好"></a>
+                       <a href="#rating-2" class="rating-item rating-item-2" title="不好"></a>
+                       <a href="#rating-3" class="rating-item rating-item-3" title="一般"></a>
+                       <a href="#rating-4" class="rating-item rating-item-4" title="好"></a>
+                       <a href="#rating-5" class="rating-item rating-item-5" title="很好"></a>
+                  </div>
+                  <div class="rating rating-1" id="rating-1">
+                       <a href="#rating-1" class="rating-item rating-item-1" title="很不好"></a>
+                       <a href="#rating-2" class="rating-item rating-item-2" title="不好"></a>
+                       <a href="#rating-3" class="rating-item rating-item-3" title="一般"></a>
+                       <a href="#rating-4" class="rating-item rating-item-4" title="好"></a>
+                       <a href="#rating-5" class="rating-item rating-item-5" title="很好"></a>
+                  </div>
+                  <div class="rating rating-2" id="rating-2">
+                       <a href="#rating-1" class="rating-item rating-item-1" title="很不好"></a>
+                       <a href="#rating-2" class="rating-item rating-item-2" title="不好"></a>
+                       <a href="#rating-3" class="rating-item rating-item-3" title="一般"></a>
+                       <a href="#rating-4" class="rating-item rating-item-4" title="好"></a>
+                       <a href="#rating-5" class="rating-item rating-item-5" title="很好"></a>
+                  </div>
+                  <div class="rating rating-3" id="rating-3">
+                       <a href="#rating-1" class="rating-item rating-item-1" title="很不好"></a>
+                       <a href="#rating-2" class="rating-item rating-item-2" title="不好"></a>
+                       <a href="#rating-3" class="rating-item rating-item-3" title="一般"></a>
+                       <a href="#rating-4" class="rating-item rating-item-4" title="好"></a>
+                       <a href="#rating-5" class="rating-item rating-item-5" title="很好"></a>
+                  </div>
+                  <div class="rating rating-4" id="rating-4">
+                       <a href="#rating-1" class="rating-item rating-item-1" title="很不好"></a>
+                       <a href="#rating-2" class="rating-item rating-item-2" title="不好"></a>
+                       <a href="#rating-3" class="rating-item rating-item-3" title="一般"></a>
+                       <a href="#rating-4" class="rating-item rating-item-4" title="好"></a>
+                       <a href="#rating-5" class="rating-item rating-item-5" title="很好"></a>
+                  </div>
+                  <div class="rating rating-5" id="rating-5">
+                       <a href="#rating-1" class="rating-item rating-item-1" title="很不好"></a>
+                       <a href="#rating-2" class="rating-item rating-item-2" title="不好"></a>
+                       <a href="#rating-3" class="rating-item rating-item-3" title="一般"></a>
+                       <a href="#rating-4" class="rating-item rating-item-4" title="好"></a>
+                       <a href="#rating-5" class="rating-item rating-item-5" title="很好"></a>
+                  </div>
+            </div>
+         
+	</body>
+</html>

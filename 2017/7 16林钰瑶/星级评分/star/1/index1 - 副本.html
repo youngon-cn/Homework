@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+	<head>
+		<meta charset="utf-8" />
+		<title>星级评分-第一种</title>
+		<style>
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			
+			li {
+				list-style-type: none;
+			}
+			
+			.ratinng {
+				width: 130px;
+				height: 26px;
+				margin: 100px auto;
+			}
+			
+			.rating-item {
+				float: left;
+				width: 26px;
+				height: 26px;
+			    background: url(img/starr.jpg) no-repeat;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- 第一种实现方式 -->
+		<ul class="rating" id="rating">
+			<li class="rating-item" title="很不好" ></li>
+			<li class="rating-item" title="不好"></li>
+			<li class="rating-item" title="一般"></li>
+			<li class="rating-item" title="好"></li>
+			<li class="rating-item" title="很好"></li>
+		</ul>
+        <script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+		<script>
+			var num=2,                                               //点亮个数
+			    $rating=$('#rating'),
+			   	$item=$rating.find('.rating-item');
+			var lightOn=function(num){
+				$item.each(function(index){
+					if(index<num){
+						$(this).css('background-position','0 -26px');
+					}else{
+						$(this).css('background-position','0 0');
+					}
+				});
+			};
+			//初始化                                                                                           
+			lightOn(num);                   //初始点亮两颗
+			
+			$item.on('mouseover',function(){
+				lightOn($(this).index()+1);
+			}).on('click',function(){
+				num=$(this).index()+1;
+			});
+		</script>
+	</body>
+</html>
+

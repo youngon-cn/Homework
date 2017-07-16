@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="utf-8" />
+		<title>js表单验证</title>
+	</head>
+	<body>
+		<form action="login.do?act=login" method="post">
+           <p>用户帐号</p> 
+           <input type=text name="userId" size="18" value="" >
+           <p>登录密码 </p>    
+           <input type="password" name="password" size="19" value=""/>      
+           <input type=submit name="submit1" value="登陆" onclick="return check(this.form)">  
+        </form>
+
+		<script>
+            function check(form) {
+              if(form.userId.value=='') {
+                 alert("请输入用户帐号!");
+                 form.userId.focus();
+                 return false;
+                }
+              if(form.password.value==''){
+                  alert("请输入登录密码!");
+                  form.password.focus();
+                  return false;
+                }
+              return true;
+            }
+       </script>
+	</body>
+</html>
