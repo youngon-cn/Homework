@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			* {
+				margin: 0px;
+				padding: 0px;
+			}
+			
+			#forms {
+				height: 600px;
+				width: 900px;
+				margin: 0 auto;
+				border: green 1px solid;
+			}
+			
+			.form {
+				height: 45px;
+				width: 400px;
+				margin-top: 40px;
+				margin-left: 40px;
+				border: 2px solid green;
+			}
+			
+			.but {
+				margin-top: 30px;
+				height: 30px;
+				width: 50px;
+			}
+			
+			#form p {
+				height: 40px;
+				width: 400px;
+			}
+			
+			#form li {
+				height: 130px;
+				width: 900px;
+				list-style: none;
+			}
+			
+			#dispaly1 {
+				float: right;
+				margin-top: 40px;
+			}
+			#text2{
+				height: 40px;
+				width: 100px;
+			}
+			#text2_2{
+				height: 40px;
+				width: 90px;
+			}
+			#selet{
+				height: 44px;
+				width: 60px;
+			}
+			#dispaly2{
+				float: right;
+				margin-top: 40px;
+			}
+			#dispaly1_1{
+				margin-left: 85px;
+			}
+			#text3{
+				margin-left: 10px;
+			}
+			#dispaly3{
+				float: right;
+				margin-top: 40px;
+			}
+			#dispaly3_1{
+				margin-left: 85px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="forms">
+			<form id="form">
+				<li id="box1">
+					姓名：<input type="text" class="form" id="text1">
+					<p id="dispaly1"></p>
+					<p id="dispaly1_1"></p>
+				</li>
+				<li id="box2">
+					日期：<input type="text" class="form" id="text2">年
+					<select id="selet">
+						<option>1</option>
+						<option>2</option>
+						<option>3</option>
+						<option>4</option>
+						<option>5</option>
+						<option>6</option>
+					</select>月
+					<input type="text" class="form" id="text2_2">日
+					<p id="dispaly2"></p>
+				</li>
+				<li id="box3">
+					身份证号：<input type="text" class="form" id="text3">
+					<p id="dispaly3"></p>
+					<p id="dispaly3_1"></p>
+				</li>
+	      <input type="button" value="提交" class="but" id="but" />
+			</form>
+		</div>
+		<script>
+			function getid(id) {
+					return document.getElementById(id);
+				}
+
+				function getTag(parent, chlid) {
+					return parent.getElementsByTagName(chlid);
+				}
+
+				function getstyle(obj, attr) {
+					return obj.currentStyle ? obj.currentStyle[attr] : getComputedStyle(obj)[attr];
+				}
+
+			function ready(dispaly1,dispaly1_1,but,text1,dispaly1,world) {
+				text1.onkeyup = function() {
+					var i = text1.value.length
+					if(world.test(text1.value)) {
+						i *= 2;
+					}
+					dispaly1_1.innerHTML = "你输入了" + i + "个字符";
+					if(i == 0) {
+						dispaly1.innerHTML = "";
+						dispaly1_1.innerHTML = "";
+					}
+				}
+				text1.onfocus = function() {
+					var k = text1.value.length
+					if(k > 0) {
+						dispaly1_1.innerHTML = "你输入了" + k + "个字符";
+					}
+				}
+
+				text1.onblur = function() {
+					dispaly1_1.innerHTML = "";
+					if(parseInt(text1.value.length) >= 5) {
+						dispaly1.innerHTML = "你输入名字字数过多,请重新输入";
+					} else if(world.test(text1.value)) {
+						dispaly1.innerHTML = "你输入的正确";
+					} else if(text1.value === "") {
+						dispaly1.innerHTML = "你还没有输入名字";
+					} else {
+						dispaly1.innerHTML = "你输入的是错误的,请输入名字";
+					}
+				}
+			}
+	function datE(text2,selet,text2_2,math1,math2){
+				text2_2.onblur=function(){
+					console.log(math2.test(text2_2.value))
+					if(math1.test(text2.value) && math2.test(text2_2.value)){
+						dispaly2.innerText="你输入的正确"
+					}
+					else if(text2.value==""){
+						dispaly2.innerText="你还有没输入或者没有输入完全"
+					}
+					else if(text2_2.value==""){
+						dispaly2.innerText="你还有没输入或者没有输入完全"
+					}
+					else{
+						dispaly2.innerText="你输错了，含有非法字符"
+					}
+				}
+				text2.onblur=function(){
+					if(math1.test(text2.value) && math2.test(text2_2.value)){
+						dispaly2.innerText="你输入的正确"
+					}
+					else if(text2.value==""){
+						dispaly2.innerText="你还有没输入或者没有输入完全"
+					}
+					else if(text2_2.value==""){
+						dispaly2.innerText="你还有没输入或者没有输入完全"
+					}
+					else{
+						dispaly2.innerText="你输错了"
+					}
+				}
+				text2_2.onfocus=function(){
+					dispaly2.innerText="";
+				}
+				text2.onfocus=function(){
+					dispaly2.innerText="";
+				}
+			}
+			window.onload = function() {
+			var dispaly1 = getid("dispaly1");
+			var dispaly1_1 = getid("dispaly1_1");
+			var but = getid("but");
+			var text1 = getid("text1")
+			var dispaly1 = getid("dispaly1");
+			var world = /[^\u0000-\u00FF]/;
+			var text2=getid("text2");
+			var selet=getid("selet");
+			var text2_2=getid("text2_2");
+			var dispaly2=getid("dispaly2");
+			var math1=/\d{4}/;
+			var math2=/[0123]\d|[0]\d/;
+			var text3=getid("text3");
+			var dispaly3=getid("dispaly3");
+			var dispaly3_1=getid("dispaly3_1");
+			var IDCard=/^[1-9]\d{5}(18|19|([23]\d))\d{2}((0[1-9])|(10|11|12))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/;
+			ready(dispaly1,dispaly1_1,but,text1,dispaly1,world);
+			datE(text2,selet,text2_2,math1,math2);
+			IDcard(text3,dispaly3,IDCard,dispaly3_1)
+			}
+          function IDcard(text3,dispaly3,IDCard,dispaly3_1){
+         	text3.onkeyup=function(){
+         	    var card=text3.value.length;
+         		dispaly3_1.innerHTML="你输入了"+card+"个字符";
+         		if(card==0){
+         			dispaly3_1.innerHTML="";
+         		}
+         	}
+         	text3.onblur=function(){
+         		dispaly3_1.innerHTML="";
+         		console.log(IDCard.test(text3.value));
+         		if(IDCard.test(text3.value)){
+         			dispaly3.innerHTML="你输入正确";
+         		}
+         		else if(text3.value.length<=15){
+         			dispaly3.innerHTML="你还有没输完的";
+         		}
+         		else {
+         			dispaly3.innerHTML="你输入了非法字符";
+         		}
+         	}
+         }
+		</script>
+	</body>
+
+</html>

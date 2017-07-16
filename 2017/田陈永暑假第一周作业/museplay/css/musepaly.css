@@ -1,0 +1,167 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+#ariseIMG{
+	height: 100px;
+	width: 107px;
+	position: absolute;
+	top: 100px;
+}
+#ariseIMGs{
+	height: 100px;
+	width: 107px;
+	position: absolute;
+	top: 100px;
+}
+#all{
+	width: 100%;
+}
+#record{
+	position: relative;
+	height: 200px;
+	width: 750px;
+	background-color:rgba(0,0,0,0.2);
+	margin-left: 24%;
+	box-shadow: 0px 0px 20px rgba(0,0,0,0.7);
+}
+#record p{
+	font-size: 50px;
+	color: white;
+	text-align: center;
+	height: 50px;
+	width: 750px;
+}
+#wid{
+	
+	height: 15px!important;
+	margin-top: 10px;
+	background: blue;
+}
+#but{
+	background-color:green ;
+	border: 1px green solid;
+	font-size: 50px;
+	color: white;
+	text-align: center;
+	height: 60px;
+	width: 210px;
+	margin-left: 270px;
+	margin-top: 30px;
+}
+#muse{
+	
+	position: relative;
+	width: 750px;
+	height: 550px;
+	margin-left: 24%;
+	margin-top: 5%;
+}
+#muse img{
+	position: absolute;
+}
+#frame{
+	
+	left: 24%;
+	top: 5%;
+	position:absolute;
+	width: 750px;
+	height: 550px;
+}
+#frame1{
+	height: 90px;
+	width: 750px;
+	margin-top: 235px;
+}
+#frame1 li{
+	position: relative;
+	height: 90px;
+	width: 105px;
+	border-radius:50% ;
+	float: left;
+	list-style: none;
+	margin-left: 143px;
+	overflow: hidden;
+}
+#frame1 li:nth-child(2){
+	margin-left: 76px;
+	margin-top: -5px;
+}
+#frame1 li:nth-child(3){
+	margin-left: 90px;
+}
+#frame2{
+	height: 90px;
+	width: 750px;
+}
+#frame2 li{
+	position: relative;
+	height: 90px;
+	width: 105px;
+	border-radius:30% ;
+	float: left;
+	list-style: none;
+	margin-left: 113px;
+	overflow: hidden;
+}
+#frame2 li:nth-child(1){
+	margin-top: -7px;
+}
+#frame2 li:nth-child(2){
+	margin-top: -7px;
+}
+#frame2 li:nth-child(3){
+	margin-left: 93px;
+	margin-top: -7px;
+}
+#frame3{
+	height: 90px;
+	width: 750px;
+	margin-top: 3px;
+}
+#frame3 li{
+	position: relative;
+	height: 90px;
+	width: 105px;
+	border-radius:30% ;
+	float: left;
+	list-style: none;
+	margin-left: 110px;
+	overflow: hidden;
+}
+#frame3 li:nth-child(1){
+	margin-top: -4px;
+	margin-left: 110px;
+}
+#frame3 li:nth-child(2){
+	margin-top: 1px;
+}
+#frame3 li:nth-child(3){
+	margin-top: 2px;
+	margin-left: 115px;
+}
+#end{
+	position: absolute;
+	left: 50px;
+	top: 120px;
+	border: 1px green solid;
+	height: 30px;
+	color: white;
+	background-image:url(../imgs/img3.png);
+}
+#setT{
+	top: 0px;
+	position: absolute;
+	background: black;
+	opacity: 0.7;
+}
+#setTc{
+	position: relative;
+	height: 500px;
+	width: 500px;
+	background: white;
+	font-size: 100px;
+	color: black;
+	text-align: center;
+	line-height: 500px;
+}

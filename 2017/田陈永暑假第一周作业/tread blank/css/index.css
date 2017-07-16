@@ -1,0 +1,98 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+#big_box{
+	height: 800px;
+	width: 1000px;
+	border: 1px solid black;
+	margin: 0 auto;
+}
+#smell_box{
+	overflow: hidden;
+	float: left;
+	height: 800px;
+	width: 800px;
+	border: 1px solid green;
+}
+#smell_boxs{
+	position: relative;
+	float: left;
+	height: 800px;
+	width: 800px;
+	border: 1px solid green;
+}
+#begin{
+	height: 800px;
+	width: 196px;
+	float: right;
+}
+#first_box{
+	position: absolute;
+	height: 200px;
+	width: 800px;
+	border: 1px solid red;
+}
+#second_box{
+	position: absolute;
+	height: 200px;
+	width: 800px;
+	border: 1px solid red;
+}
+#second_box li{
+	border: 1px gray solid;
+	background: green;
+	float: left;
+	list-style: none;
+	height: 200px;
+	width: 198px;
+}
+#first_box li{
+	border: 1px gray solid;
+	background: green;
+	float: left;
+	list-style: none;
+	height: 200px;
+	width: 198px;
+}
+#black{
+	background:black!important ;
+}
+#green{
+	background:greenyellow!important ;
+}
+#score{
+	font-size: 20px;
+}
+#but{
+	height: 20px;
+	width: 100px;
+	margin-top: 20px;
+}
+#but1{
+	height: 20px;
+	width: 100px;
+}
+#out{
+	margin-top: 20px;
+	font-size: 20px;
+}
+#setT{
+	top: 0px;
+	position: absolute;
+	background:black;
+	opacity: 0.5;
+}
+#setTc{
+	position: absolute;
+	height: 500px;
+	width: 500px;
+	background: white;
+}
+#setP{
+	height: 100%;
+	width: 100%;
+	font-size: 100px;
+	text-align: center;
+	line-height: 500px;
+}
