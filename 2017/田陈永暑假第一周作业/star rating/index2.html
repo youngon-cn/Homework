@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0px;
+				padding: 0px;
+				
+			}
+			#rating{
+				left: 10px;
+				position: relative;
+				height: 64px;
+				width: 320px;
+				border: 2px green solid;
+				background-image: url(img/img.png);
+				background-size: 64px 64px;
+			}
+			#rating a{
+				width: 64px;
+				height: 64px;
+				top: 0px;
+				z-index: 3;
+				position: absolute;
+			}
+			#star1{
+				left: 0px;
+			}
+			#star2{
+				left: 64px;
+			}
+			#star3{
+				left: 128px;
+			}
+			#star4{
+				left: 190px;
+			}
+			#star5{
+				left: 254px;
+			}
+			#rat0{
+				left: 0px;
+			}
+			#rat1{
+				left: 64px;
+			}
+			#rat2{
+				left: 128px;
+			}
+			#rat3{
+				left: 190px;
+			}
+			#rat4{
+				left: 254px;
+			}
+			#star1:hover{
+				left: 0;
+				z-index: 2;
+				background-size: 64px 64px!important;
+				background-image:url(img/img2.png) ;
+				width: 64px!important;
+			}
+			#star2:hover{
+				left: 0;
+				z-index: 2;
+				background-size: 64px 64px!important;
+				background-image:url(img/img2.png) ;
+				width: 128px!important;
+			}
+			#star3:hover{
+				left: 0;
+				z-index: 2;
+				background-size: 64px 64px!important;
+				background-image:url(img/img2.png) ;
+				width: 190px!important;
+			}
+			#star4:hover{
+				left: 0;
+				z-index: 2;
+				background-size: 64px 64px!important;
+				background-image:url(img/img2.png) ;
+				width: 254px!important;
+			}
+			#star5:hover{
+				left: 0;
+				z-index: 2;
+				background-size: 64px 64px!important;
+				background-image:url(img/img2.png) ;
+				width: 320px!important;
+			}
+			#arise{
+				display: none;
+				position: absolute;
+				height: 64px;
+				top: 66px;
+				background-size: 64px;
+				background-image: url(img/img2.png);
+			}
+		</style>
+	</head>
+	<body>
+		<div id="rating">
+			<a href="javascript:;" title="差" id="star1"></a>
+			<a href="javascript:;" title="还行" id="star2"></a>
+			<a href="javascript:;" title="较好" id="star3"></a>
+			<a href="javascript:;" title="好" id="star4"></a>
+			<a href="javascript:;" title="很好" id="star5"></a>
+			<div id="arise" style="width: 320px;"></div>
+		</div>
+		<script>
+			var arise=document.getElementById("arise");
+			var rating=document.getElementById("rating");
+			var star=rating.getElementsByTagName("a");
+			window.onload=function(){
+				for(var i=0;i<star.length;i++){
+					ariseing(i);
+				}
+				
+				
+				function ariseing(i){
+					star[i].onmousedown=function(){
+						arise.style.display="block"
+						console.log(i)
+						arise.style.width=(i+1)*64+'px';
+						arise.style.top=0+'px';
+						for(var y=0;y<star.length;y++){
+							star[y].setAttribute("id","rat"+y);
+						}
+						
+					}
+				}
+			}
+			
+			
+		</script>
+	</body>
+</html>

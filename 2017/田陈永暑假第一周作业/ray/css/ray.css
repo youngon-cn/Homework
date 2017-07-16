@@ -1,0 +1,73 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+#box{
+	height: 520px;
+	width: 520px;
+	border: 1px solid red;
+	margin: 0 auto;
+}
+#mine{
+	height: 520px;
+	width: 520px;
+	border: 1px solid green;
+}
+.rays{
+	list-style: none;
+	height: 50px;
+	width: 520px;
+}
+.raysLi{
+	background-image:url(../img/1.jpg);
+	border: 1px gray solid;
+	background-size: 50px 50px;
+	list-style: none;
+	height: 50px;
+	width: 50px;
+	float: left;
+}
+.raysLi1{
+	background-image:url(../img/1.jpg);
+	border: 1px gray solid;
+	background-size: 50px 50px;
+	list-style: none;
+	height: 50px;
+	width: 50px;
+	float: left;
+}
+.raysLi2{
+	background-image:url(../img/2.jpg);
+	border: 1px gray solid;
+	background-size: 50px 50px;
+	list-style: none;
+	height: 50px;
+	width: 50px;
+	float: left;
+}
+.raysLi3{
+	background-image:url(../img/3.jpg);
+	border: 1px gray solid;
+	background-size: 50px 50px;
+	list-style: none;
+	height: 50px;
+	width: 50px;
+	float: left;
+}
+.raysli{
+	background-image: url(../img/bomb.jpg);
+	border: 1px gray solid;
+	background-size: 50px 50px;
+	list-style: none;
+	height: 50px;
+	width: 50px;
+	float: left;
+}
+#b_ray{
+	height: 100px;
+	width: 500px;
+	margin: 0 auto;
+	text-align: center;
+	line-height: 100px;
+	font-size: 30px;
+}

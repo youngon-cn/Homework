@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		*{
+			margin: 0px;
+			padding: 0px;
+		}
+		#inputT,#inputP{
+			border: 2px green solid;
+			height: 40px;
+			width: 400px;
+			display: block;
+			margin-top: 40px;
+		}
+		#inputS{
+			border: 1px green solid;
+			background-color: yellow;
+			height: 30px;
+			width: 50px;
+			margin-top: 60px;
+		}
+		#form{
+            margin: 0 auto;
+			width: 800px;
+			height: 600px;
+			border: 1px solid red;
+		}
+		#form li{
+			width: 700px;
+			height: 30px;
+			list-style: none;
+		}
+		#Tvalue{
+			margin-top: -30px;
+			font-size: 30px;
+			float: right;
+		}
+		#Tpassword{
+			margin-top: -30px;
+			font-size: 30px;
+			float: right;
+		}
+	</style>
+	<body>
+		<form id="form">
+			<li>
+		    <input type="text" id="inputT" value="name"/>
+		    <p id="Tvalue" ></p>
+		    <p id="Tvalue1" style="display: none">你输入了个0字符串</p>
+		    </li>
+		    <li>
+		     <input type="password"  id="inputP" />
+		     <p id="Tpassword" ></p>
+		    <p id="Tpassword1" style="display: none">你必须输入6-18个字符的密码，以字母开始</p>
+		    </li>
+			<input type="submit"  id="inputS"/>
+		</form>
+		<script src="js/jquery-3.1.1.min.js"></script>
+		<script>
+			 var $world = /[^\u0000-\u00FF]/;
+			 var $password=/^[a-zA-Z]\w{5,17}$/;
+			 var $inputT=$("#inputT");
+			 var $Tvalue1=$("#Tvalue1");
+			 var $inputP=$("#inputP");
+			 var $inputS=$("#inputS");
+			 function regrxpV(){
+			 	$inputT.keyup(function(){
+					$value=$inputT.val().length;
+					$Tvalue1.css("display","block")
+					//console.log($world.test($inputT.val()))
+					if($world.test($inputT.val())){
+						$value*=2;
+					}
+					$Tvalue1.html("你输入了"+$value+"个字符串");
+					if($value==0){
+						$Tvalue1.css("display","none");
+					}
+				})
+				$inputT.blur(function(){
+					//var valueone=$inputT.val().split("");
+					//console.log(valueone)
+					$Tvalue1.css("display","none")
+						//console.log($inputT.val().length)
+						if($inputT.val().length===0){
+							$("#Tvalue").html("你还没有输入");
+						}
+						else if($inputT.val().length>=10){
+							$("#Tvalue").html("你输入的超过范围");
+						}
+						else if(!$world.test($inputT.val())){
+							$("#Tvalue").html("你输入了非法字符");
+						}
+						else{
+						 $("#Tvalue").html("你输入的正确")
+					}
+				})
+				$inputT.focus(function(){
+					$("#Tvalue").html("");
+				})
+			 }
+			 function passwordV(){
+			 	$inputP.focus(function(){
+			 		$("#Tpassword1").css("display","block");
+			 		$("#Tpassword").css("display","none")
+			 	})
+			 	$inputP.blur(function(){
+			 		$("#Tpassword").css("display","block")
+			 		$("#Tpassword1").css("display","none");
+			 		if($inputP.val().length===0){
+							$("#Tpassword").html("你还没有输入");
+						}
+						else if($inputP.val().length>=10){
+							$("#Tpassword").html("你输入的超过范围");
+						}
+						else if(!$password.test($inputP.val())){
+							$("#Tpassword").html("你输入了非法字符");
+						}
+						else{
+						   $("#Tpassword").html("你输入的正确")
+					}
+			 	})
+			 	
+			 	$inputP.keyup(function(){
+			 		//console.log($inputP.val().length)
+			 		if($inputP.val().length===0){
+			 			$("#Tpassword1").css("display","none");
+			 		}
+			 		else{
+			 			$("#Tpassword1").css("display","block");
+			 			$valueP=$inputP.val().length;
+					//console.log($world.test($inputT.val()))
+					   if($password.test($inputT.val())){
+						$valueP*=2;
+					   }
+					   $("#Tpassword1").html("你输入了"+$valueP+"个字符串");
+			 		   }
+			 	})
+			 }
+			$(document).ready(function(){
+		      regrxpV();
+		      passwordV();
+		      $inputS.click(function(){
+		      	if($world.test($inputT.val()) &&  $password.test($inputP.val())){
+		      		alert("你成功了");
+		      		$inputP.val($inputP.val());
+		      	}
+		      	else{
+		      		alert("你输入的不对")
+		      	}
+		      })
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			* {
+				margin: 0px;
+				padding: 0px;
+			}
+			
+			#star {
+				border: 2px solid blue;
+				margin-left: 45%;
+				margin-top: 100px;
+				height: 64px;
+				width: 320px;
+				overflow: hidden;
+			}
+			
+			#star ul {
+				position: relative;
+				overflow: hidden;
+				width: 64px;
+				height: 190px;
+				float: left;
+			}
+			
+			#star ul li {
+				width: 64px;
+				height: 190px;
+				background-image: url(img/star.png);
+				background-size: 64px;
+				position: absolute;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="star">
+			<ul>
+				<li style="top:0px;" title="很差"></li>
+			</ul>
+			<ul>
+				<li style="top:0px;" title="还行"></li>
+			</ul>
+			<ul>
+				<li style="top:0px;" title="不错"></li>
+			</ul>
+			<ul>
+				<li style="top:0px;" title="好"></li>
+			</ul>
+			<ul>
+				<li style="top:0px;" title="极好"></li>
+			</ul>
+		</div>
+		<script>
+			function Clickstar() {};
+			Clickstar.prototype.Move = function(stars, index) {
+				for(var i = 0; i < stars.length; i++) {
+					stars[i].style.top = 0 + 'px';
+				}
+				for(var o = 0; o <= index; o++) {
+					stars[o].style.top = '-' + 64 + 'px';
+					//console.log(stars[o].style.top);
+				}
+			}
+
+			function restore(stars) {
+				for(var b = 0; b < stars.length; b++) {
+					stars[b].style.top = 0 + 'px';
+				}
+			}
+
+			function contents(ev, stars, ind, star) {
+				//console.log(ind)
+				for(var l = 0; l < stars.length; l++) {
+					stars[l].style.top = 0 + 'px';
+				}
+				for(var k = 0; k <= ind; k++) {
+					stars[k].style.top = '-' + 64 + 'px';
+					//console.log(stars[o].style.top);
+				}
+				half(ev, star, stars, ind);
+			}
+
+			function half(ev, star, stars, ind) {
+				//console.log(ind)
+				var starL = ev.clientX;
+				var starX = star.offsetLeft;
+				var Dstar = starL - starX;
+				Arisehalf(Dstar, stars, ind);
+
+				//console.log(Dstar);
+			}
+
+			function Arisehalf(Dstar, stars, ind) {
+				//console.log(ind)
+				if(Dstar > 0 && Dstar < 32) {
+					stars[ind].style.top = '-' + 128 + 'px';
+				} else if(Dstar > 64 && Dstar < 96) {
+					stars[ind].style.top = '-' + 128 + 'px';
+				} else if(Dstar > 128 && Dstar < 160) {
+					stars[ind].style.top = '-' + 128 + 'px';
+				} else if(Dstar > 192 && Dstar < 224) {
+					stars[ind].style.top = '-' + 128 + 'px';
+				} else if(Dstar > 256 && Dstar < 288) {
+					stars[ind].style.top = '-' + 128 + 'px';
+				}
+			}
+
+			function Movestar(starrating, stars, i, star, starUL) {
+				//stars[i].addEventListener("mousemove", Star1);
+				//star.addEventListener("mouseleave",lightStar);
+				stars[i].onmousemove = function Star1() {
+					starrating.Move(stars, i);
+					stars[i].style.title = true;
+				}
+
+				star.onmouseleave = function lightStar() {
+					restore(stars);
+				}
+
+				stars[i].onmousedown = function() {
+					console.log(i);
+					for(var k = 0; k < stars.length; k++) {
+						stars[k].onmousemove = "";
+					}
+					star.onmouseleave = "";
+					//star.removeEventListener("mouseleave",lightStar);
+					//stars[i].removeEventListener("mousemove", Star1);
+					contents(event, stars, i, star, starUL);
+				}
+			}
+
+			window.onload = function() {
+				var star = document.getElementById("star");
+				var starUL = star.getElementsByTagName("ul");
+				var stars = star.getElementsByTagName("li");
+				var starrating = new Clickstar();
+				for(var n = 0; n < stars.length; n++) {
+					var i = n;
+					Movestar(starrating, stars, i, star, starUL);
+				}
+
+			}
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			#star{
+				position: absolute;
+				height: 64px;
+				width: 320px;
+				overflow: hidden;
+				border: red 2px solid;
+			}
+            #stars{
+            	z-index: 6;
+            	position: absolute;
+            	height: 64px;
+            	overflow: hidden;
+            	background-size:64px ;
+            	background-image:url(img/img2.png);
+            }
+            #star ul{
+            	background-size:64px ;
+            	background-image: url(img/img.png);
+            	position: absolute;
+            }
+            #star li{
+            	position: relative;
+            	z-index: 10;
+            	list-style: none;
+            	height: 64px;
+            	width: 64px;
+            	float: left;
+            }
+            #star li img{
+            	height: 64px;
+            	width: 64px;
+            }
+		</style>
+	</head>
+	<body>
+		<div id="star">
+        <div id="stars" style="width: 0px;"></div>
+        <ul>
+        <li title="很差"></li>
+        <li title="还行"></li>
+        <li title="不错"></li>
+        <li title="好"></li>
+        <li title="很好"></li>
+        </ul>
+		</div>
+		<script>
+			var star=document.getElementById("star");
+			var stars=document.getElementById("stars");
+			var starimg=star.getElementsByTagName("li");
+		
+			function arise(){
+				for(var i=0;i<starimg.length;i++){
+					ariseImg(i);
+				}
+			}
+			function ariseImg(i){
+				var n=i;
+				starimg[n].onmousemove=function(){
+					starimg[n].style.title=true;
+					stars.style.width='64'*(n+1)+"px";
+				}
+				star.onmouseleave=function(){
+					stars.style.width='0'*(n+1)+"px";
+				}
+				starimg[n].onmousedown=function(){
+				starimg[n].style.title=true;
+				for(var k = 0; k < starimg.length; k++) {
+						starimg[k].onmousemove = "";
+					}
+				star.onmouseleave="";
+				stars.style.width=(n+1)*'64'+'px';
+				console.log(stars.style.width)
+				console.log(n);
+				half(event,n);
+				}
+			}
+			function half(ev){
+				var starL = ev.clientX;
+				var starX = star.offsetLeft;
+				var Dstar = starL - starX;
+				if(Dstar > 0 && Dstar < 32) {
+					stars.style.width = '32px'
+				} else if(Dstar > 64 && Dstar < 96) {
+					stars.style.width = "96px";
+				} else if(Dstar > 128 && Dstar < 160) {
+					stars.style.width = "160px";
+				} else if(Dstar > 192 && Dstar < 224) {
+					stars.style.width = "224px";
+				} else if(Dstar > 256 && Dstar < 288) {
+					stars.style.width = '288px';
+				}
+			}
+			
+			window.onload=function(){
+				arise();
+			}
+		</script>
+	</body>
+</html>
