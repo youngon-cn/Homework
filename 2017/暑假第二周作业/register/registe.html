@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<style>
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+#all {
+	position: relative;
+	background: url(img/2.jpg);
+}
+
+#registe {
+	height: 800px;
+	width: 500px;
+	position: absolute;
+	background: rgba(255, 255, 255, 0.8);
+}
+
+#in_registe {
+	float: left;
+	height: 800px;
+	width: 400px;
+	height:;
+}
+
+#on_registe {
+	text-align: center;
+	line-height: 80px;
+	background: white;
+	float: left;
+	width: 100px;
+	height: 800px;
+}
+
+#on_registe p {
+	width: 100px;
+	font-size: 40px;
+}
+
+#form {
+	float: left;
+	height: 800px;
+	width: 400px;
+}
+
+#form li {
+	float: left;
+	margin-top: 30px;
+	list-style: none;
+	height: 100px;
+	width: 500px;
+}
+
+#form li p, input {
+	float: left;
+}
+
+#form li p {
+	font-size: 22px;
+}
+
+#form li input {
+	height: 30px;
+	width: 300px;
+}
+
+#submit {
+	margin-left: 170px;
+	height: 30px !important;
+	width: 70px !important;
+}
+
+.text {
+	margin-left: 60px;
+	height: 40px;
+	line-height: 40px;
+	width: 400px;
+	display: block !important;
+}
+</style>
+</head>
+<body>
+	<div id="all">
+		<div id="registe" style="height: 800px; width: 500px;">
+			<div id="in_registe">
+				<form id="form" method="post" action="index.php">
+					<li>
+						<p>姓名：</p> <input type="text" name="name" id="nameT" />
+						<p class="text" id="output"></p>
+					</li>
+					<li>
+						<p>邮箱：</p> <input type="text" name="Emali" id="EmaliT" />
+						<p class="text" id="outputE"></p>
+					</li>
+					<li>
+						<p>账号：</p> <input type="text" name="account" id="accountT" />
+						<p class="text" id="outputA"></p>
+					</li>
+					<li>
+						<p>密码：</p> <input type="text" name="password" id="passwordT" />
+						<p class="text" id="outputP"></p>
+					</li>
+					<li><input type="button" id="submit" name="submit" value="提交" />
+					</li>
+				</form>
+			</div>
+			<div id="on_registe">
+				<p>注</p>
+				<p>册</p>
+				<p>表</p>
+			</div>
+		</div>
+	</div>
+	<script>
+			var screenX=document.documentElement.clientWidth;
+			var screenY=document.documentElement.clientHeight;
+			window.onload=function(){
+				var sub=document.getElementById("submit");
+				var textp=document.getElementsByClassName("text");
+				var registe=document.getElementById("registe");
+				var all=document.getElementById('all');
+				var registeX=parseInt(registe.style.width);
+				var registeY=parseInt(registe.style.height)
+				all.style.width=screenX+'px';
+				all.style.height=screenY+'px';
+				registe.style.left=(screenX-registeX)/2+'px';
+				registe.style.top=(screenY-registeY)/2+'px';
+				var nameT=document.getElementById("nameT");
+				var EmaliT=document.getElementById("EmaliT");
+				var accountT=document.getElementById("accountT");
+				var passwordT=document.getElementById("passwordT");
+				var output=document.getElementById("output");
+				var outputE=document.getElementById("outputE");
+				var outputA=document.getElementById("outputA");
+				var outputP=document.getElementById("outputP");
+				var Emali=/\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
+				var passwords=/[^\u4e00-\u9fa5]/;
+				var name=/[\u4e00-\u9fa5]{2,5}/;
+				var account=/^[a-zA-Z][a-zA-Z0-9_]{6,18}$/;
+				chark(nameT,name,output);
+				chark(EmaliT,Emali,outputE);
+				chark(accountT,account,outputA);
+				chark(passwordT,passwords,outputP);
+				sub.onclick=function(){
+					var k=0;
+					for(var i=0;i<textp.length;i++){
+						//console.log(textp[i].innerText);
+						if(textp[i].innerText=="你输入的正确"){
+							k++;
+						}
+					}
+					if(k===4){
+						sub.setAttribute("type","submit");
+						for(var m=0;m<textp.length;m++){
+						//console.log(textp[m].innerText);
+						textp[m].value="";
+						textp[m].innerText=="";
+					}
+					sub.onsubmit();
+					}else{
+						alert("你还没有全部输入正确")
+					}
+				}
+			}
+			
+			function chark(inputW,rex,nowP){
+				inputW.onblur=function(){
+					console.log(inputW.value)
+					if(rex.test(inputW.value)){
+					nowP.innerText="你输入的正确";	
+					nowP.style.color="black";
+					}
+					else{
+					nowP.innerText="你输入的有误";
+					nowP.style.color="red";
+					}
+				}
+				
+				
+			}
+			</script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			* {
+				margin: 0px;
+				padding: 0px;
+			}
+			
+			#all {
+				position: relative;
+				background: url(img/1.jpg);
+			}
+			
+			#maseege {
+				border: 2px solid white;
+				position: absolute;
+				height: 400px;
+				width: 400px;
+				background: rgba(255, 255, 0, 0.3);
+			}
+			
+			#name,
+			#password {
+				display: block;
+				height: 30px;
+				width: 300px;
+				margin-left: 50px;
+				border: green 1px solid;
+				margin-top: 80px;
+			}
+			
+			#loading,
+			#register {
+				color: white;
+				height: 30px;
+				width: 70px;
+				margin-top: 30px;
+				background-color: green;
+				border: 1px solid green;
+			}
+			
+			#loading {
+				margin-left: 70px;
+			}
+			
+			#register {
+				margin-left: 110px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="all">
+			<div id="maseege">
+				<form id="form" action="data.php" method="post" style="height: 400px; width: 400px; float: left;">
+					<input type="text" id="name" name="account" value="账号" /> <input type="text" id="password" name="pos" />
+					<input type="button" id="loading" value="登陆" name="subm"/>
+					<a href="registe.html"><input type="button" id="register" value="注册" /></a>
+				</form>
+
+			</div>
+		</div>
+		<script>
+			var screenX = document.documentElement.clientWidth;
+			var screenY = document.documentElement.clientHeight;
+			window.onload = function() {
+				var maseege = document.getElementById("maseege");
+				var all = document.getElementById('all');
+				var forms = document.getElementById("form");
+				var formX = parseInt(forms.style.width);
+				var formY = parseInt(forms.style.height)
+				all.style.width = screenX + 'px';
+				all.style.height = screenY + 'px';
+				maseege.style.left = (screenX - formX) / 2 + 'px';
+				maseege.style.top = (screenY - formY) / 2 + 'px';
+				var but = document.getElementById("loading");
+				var account = document.getElementById("name");
+				var passwor=document.getElementById('password');
+				var values = "null";
+				but.setAttribute("type","button");
+				function httpxmlR() {
+					httpxml = "";
+					if(window.XMLHttpRequest) {
+						httpxml = new XMLHttpRequest();
+					} else if(window.ActiveXObject) {
+						httpxml = new ActiveXObject("Microsoft.XMLHTTP");
+					}
+				}
+				but.onclick = function() {
+				Avalue=account.value;
+			    Apos=passwor.value;
+			    if(Avalue !== "" && Apos!==""){
+					httpxmlR();
+					httpxml.open("GET","show.php"+"?val="+Avalue+"&pas="+Apos);
+					httpxml.send();
+					httpxml.onreadystatechange = show;
+				}
+				else{
+					alert('信息错误');
+				}
+				}
+
+				function show() {
+					if(httpxml.readyState == 4 && httpxml.status==200) {
+						values = httpxml.responseText;
+						//console.log(values);
+						Asuccess();
+					}
+					//console.log(httpxml.responseText);
+				}
+
+				function Asuccess(){
+					if(values==Apos) {
+						alert('登陆成功');
+						forms.submit();
+				
+					} 
+					else {
+						alert("用户不存在");
+					}
+				}
+
+			}
+		</script>
+	</body>
+
+</html>

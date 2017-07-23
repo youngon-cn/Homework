@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<head>
+	<title></title>
+	<style type="text/css">
+		*{
+			margin: 0px;
+			padding: 0px;
+		}
+		#all{
+			height: 800px;
+			width: 1000px;
+			 margin: 0 auto;
+            border: 1px solid green;   
+		}
+		}
+		#leava{
+			height: 400px;
+            width: 500px;
+            border: 1px solid green;   
+		}
+		#text{
+			height:300px;
+			width: 498px;
+			border: 1px solid red;
+		}
+		#left{
+			height: 800px;
+			width: 500px;
+			float: left;
+		}
+		#right {
+			border: 1px green solid;
+			overflow: auto;
+			height: 800px;
+			width: 450px;
+			float: right;
+		}
+		#right p{
+			height:30px;
+			width: 450px;
+		}
+		#right p:nth-child(2){
+			text-align: right;
+			line-height: 70px;
+			height:30px;
+			width: 450px;
+		}
+		#right li{
+			border-bottom:1px yellow solid;
+			height:80px;
+			width: 444px;
+		}
+		#name{
+			height: 50px;
+			font-size: 25px;
+			width: 500px;
+			position:absolute;
+			top: 600px;
+		}
+		#names{
+			height: 50px;
+			font-size: 25px;
+			width: 500px;
+			position:absolute;
+			top: 650px;
+		}
+	</style>
+</head>
+<body>
+<div id="all">
+<div id="left">
+<div id="leava">
+<form method="post" action="data.php">
+    <textarea name="leava" id="text" rows="5" cols="300" value="">
+    </textarea>
+	<input type="submit" name="but" value="发布">
+</form>
+</div>
+</div>
+<div id="name"><?php  echo "欢迎你".$_COOKIE['acc']; ?></div>
+<div id="names"><a href="loading.html">注销</a></div>
+<div id="right">
+<?php 
+if(!empty($leava)){
+$info=file_get_contents("data.txt");
+$content=rtrim($info,"@");
+if(strlen($info)>=4){
+$con=explode("@@",$info);
+}
+foreach ($con as $key => $value) {
+	echo "<li>";
+	$shuju=explode("##",$value);
+	echo "<p>".$shuju['0']."</p>";
+	echo "<p>".'时间:'.date("Y-m-d H:i:s",$shuju['1'])."</p>";
+	echo "</li>";
+}
+echo "<script>alert('发布成功')</script>";
+}
+?>
+</div>
+</div>
+<script type="text/javascript">
+	
+</script>
+</body>
+</html>
