@@ -1,0 +1,140 @@
+		<!DOCTYPE html>
+		<html>
+		<meta charset="utf-8">
+		<head>
+			<title></title>
+			<style type="text/css">
+				*{
+					margin: 0px;
+					padding: 0px;
+				}
+				#all{
+					height: 800px;
+					width: 1000px;
+					 margin: 0 auto;
+		            border: 1px solid green;   
+				}
+				}
+				#leava{
+					height: 400px;
+		            width: 500px;
+		            border: 1px solid green;   
+				}
+				#text{
+					height:300px;
+					width: 498px;
+					border: 1px solid red;
+				}
+				#left{
+					height: 800px;
+					width: 500px;
+					float: left;
+				}
+				#right {
+					border: 1px green solid;
+					overflow: auto;
+					height: 800px;
+					width: 450px;
+					float: right;
+				}
+				#right li{
+					list-style: none;
+					border-bottom:1px yellow solid;
+					height:150px;
+					width: 444px;
+				}
+				#name{
+					height: 50px;
+					font-size: 25px;
+					width: 500px;
+					position:absolute;
+					top: 600px;
+				}
+				#names{
+					height: 50px;
+					font-size: 25px;
+					width: 500px;
+					position:absolute;
+					top: 650px;
+				}
+				.table{
+					height: 150px;
+				}
+				.tr1{
+					height: 130px;
+					width: 100%
+				}
+				.tr2{
+					height: 20px;
+					width: 100%;
+				}
+				.td1{
+                     width: 90%;    
+				}
+				.td2{
+                    width: 10%;
+				}
+				a{
+					color: black;
+				}
+			</style>
+		</head>
+		<body>
+		<div id="all">
+		<div id="left">
+		<div id="leava">
+		<form method="post" action="data.php" id="for">
+		    <textarea id="text" name="vel" form="for"></textarea>
+			<input type="submit" name="but" value="发布">
+		</form>
+		</div>
+		</div>
+		<div id="name"><?php  echo "欢迎你:".$_COOKIE['acc']; ?></div>
+		<div id="names"><a href="loading.html">注销</a></div>
+		<div id="right">
+		<?php 
+	
+		 $conns=mysql_connect('localhost','root','');
+         mysql_select_db('form');
+         $sqr=mysql_query("SELECT * FROM information ORDER BY math DESC");
+         mysql_data_seek($sqr,0);
+         //var_dump(mysql_fetch_array(mysql_query("SELECT * FROM information")));
+         while ($datas=mysql_fetch_array($sqr)) {
+         	# code...
+         	echo "<table width=100% border=1 ccellspacing='' class='table'>";
+         	echo "<tr class='tr1'>";
+         	echo "<td>".$datas['data']."</td>";
+         	echo "</tr>";
+         	echo "<tr class='tr2'>";
+         	echo "<td class='td1'>".$datas['day']."</td>";
+       
+         	echo "<td class='td2'>";
+         	?>
+         	<a href="data.php?act=<?php echo $datas['math'];?>">
+         <?php
+         	echo '删除'
+          ?>
+            </a>
+         <?php
+         	echo "</td>";
+         ?>
+        </a>
+         <?php
+         	echo "</tr>";
+         	echo "</table>";
+         	mysql_close($conns);
+         }
+         
+
+
+		?>
+
+
+
+		</div>
+		</div>
+		<script type="text/javascript">
+			
+		</script>
+		</body>
+		</html>
