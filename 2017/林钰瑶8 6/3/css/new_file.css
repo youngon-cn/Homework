@@ -1,0 +1,44 @@
+body {
+  font-family: 微软雅黑;
+  font-size: 14px;
+  color: #444;
+}
+table {
+  border: 2px solid #be3a34;
+  border-radius: 3px;
+  background-color: #fff;
+}
+th {
+  background-color: #be3a34;
+  color: rgba(255,255,255);
+  cursor: pointer;
+  select: none;
+}
+td {
+  background-color: #f9f9f9;
+}
+th, td {
+  min-width: 120px;
+  padding: 10px 20px;
+}
+th.active {
+  color: #fff;
+}
+.arrow {
+  display: inline-block;
+  vertical-align: middle;
+  width: 0;
+  height: 0;
+  margin-left: 5px;
+  
+}
+.arrow.asc {
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #fff;
+}
+.arrow.dsc {
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #fff;
+}

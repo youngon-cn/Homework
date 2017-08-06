@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<meta name="keywords" content="欢迎" />
+		<meta name="description" content="不要" />
+		<script src="https://unpkg.com/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			姓名：<input type="text"><br>
+			留言：<textarea name="" id="" cols="30" rows="10" v-model="content"></textarea><br>
+			<input type="button" value="发表" @click="message">
+			<ul>
+				<li v-for="item in commentList">
+					<span>{{item.name}}</span>：{{item.content}}
+					<a href="javascript:;">删除</a>
+				</li>
+			</ul>
+		</div>
+		<script>
+			new Vue({
+				el:'app',
+				data:{
+					name:'',
+					content:'',
+					commentList:[
+					    {name:"甄嬛",content:"怨逆风如解疑"},
+					    {name:"华妃",content:"贱人就是矫情"},
+					    {name:"皇上",content:"竟敢骗老子"},
+					    {name:"甄嬛",content:"四部么么哒"},
+					    
+					]
+				},
+			    methods:{
+				   message:function(){
+					 this.commentList.unshift({name:this.name,content:this.content});
+					 this.name='';
+					 this.content='';
+				    }
+			    }
+			});
+		</script>
+	</body>
+</html>
+
