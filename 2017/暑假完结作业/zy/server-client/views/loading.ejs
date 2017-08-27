@@ -1,0 +1,44 @@
+    <html>
+        <head>
+            <meta charset="utf-8">
+            <title>登录页面</title>
+            <style>
+                *{
+                    margin: 0px;
+                    padding: 0px;
+                }
+                .loading{
+                    height: 400px;
+                    width: 400px;
+                    border: 1px solid red;
+                    margin: 0 auto;
+                    margin-top: 150px;;
+                }
+                .loading input{
+                    height: 35px;
+                    margin-top: 80px;
+                    width: 350px;
+                }
+                .submit{
+                    text-align: center;
+                    line-height: 30px;
+                    height: 30px;
+                    width: 80px!important;
+                    font-size: 18px;
+                    color: gray;
+                    margin-left: 160px;
+                }
+            </style>
+        </head>
+        <body>
+          <div class="all">
+            <div class="loading">
+            <form method="get" action="/loading/resule">
+               用户 <input type="text" name="names" required="required"></br>
+               密码 <input type="text" name="password" required="required"></br>
+               <input type="submit" class="submit" value="验证">
+            </form>
+            </div>
+          </div>
+        </body>
+    </html>
