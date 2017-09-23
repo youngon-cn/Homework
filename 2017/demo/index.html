@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <meta charset="utf-8" />
+  <head>
+    <script src="./build/react.js"></script>
+    <script src="./build/react-dom.js"></script>
+    <script src="./build/browser.min.js"></script>
+  </head>
+
+  <body>
+    <div id="example"></div>
+    <script type="text/babel">
+      let Input = React.createClass({
+        getInitialState () {
+          return {name: '', cell: '', Emile: '', account: ''};
+        },
+        setStates (event) {
+          if(event.target.id === 'name') this.setState({name: event.target.value});
+          if(event.target.id === 'cell') this.setState({cell: event.target.value});
+          if(event.target.id === 'Emile') this.setState({Emile: event.target.value});
+          if(event.target.id === 'account') this.setState({account: event.target.value});
+        },
+        render () {
+          let data = ['', '', '', '']
+          let [Rex1, Rex2, Rex3, Rex4] = data;
+          let {name, cell, Emile, account} = {name: this.state.name, cell: this.state.cell, Emile: this.state.Emile, account: this.state.account};
+          function datalength(value, MATHREX) {
+             if(value.length <= 0) return;
+             if(MATHREX === 1) return `${value.length*2}个字符`;
+             if(value.length > 0) return `${value.length}个字符`;
+          }
+          function Rexdata(value, MATH) {
+            if(value !== undefined){
+              if(typeof value == 'String') {
+                value = value
+              }else{
+                value = value.toString()
+              }
+              const REXdata = [/[\u4e00-\u9fa5]{2,6}/, /\d{11}/, /\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/, /\d{6}/];
+              if(value.length > 0) {
+                  if(REXdata[MATH].test(value))  data[MATH] = `验证成功`;
+                  // console.log(data)
+                  if(!REXdata[MATH].test(value)) data[MATH] = `验证错误`; 
+              }
+            }
+          }
+          return <div>
+                    <li>
+                      姓名：<input type="text" id="name" onChange = {this.setStates} onBlur = {Rexdata(name, 0)}/>
+                      <p>{datalength(name, 1)}</p><p>{data[0]}</p>
+                    </li>
+                    <li>
+                      电话：<input type="text" id="cell" onChange = {this.setStates} onBlur = {Rexdata(cell, 1)}/>
+                      <p>{datalength(cell)}</p><p>{data[1]}</p>
+                    </li>
+                    <li>
+                      邮箱：<input type="text" id="Emile" onChange = {this.setStates} onBlur = {Rexdata(Emile, 2)}/>
+                      <p>{datalength(Emile)}</p><p>{data[2]}</p>
+                    </li>
+                    <li>
+                      账号：<input type="text" id="account" onChange = {this.setStates} onBlur = {Rexdata(account, 3)}/>
+                      <p>{datalength(account)}</p><p>{data[3]}</p>
+                    </li>
+                 </div>;
+        }
+      })
+      ReactDOM.render(
+        <Input />,
+        document.getElementById('example')
+      )
+    </script>
+  </body>
+</html>
