@@ -1,0 +1,12 @@
+<city></city>
+<city></city>
+<city></city>
+<city></city>
+<city></city>
+<city></city>
+<city></city>
+<city></city>
+<city><country>花都区</country><country>天河区</country><country>番禺区</country><country>南沙区</country><country>从化区</country><country>荔湾区</country><country>黄埔区</country><country>白云区</country></city>
+<city><country>富阳</country><country>下城</country><country>上城</country><country>西湖</country><country>临安</country></city>
+<city><country>凤岗</country><country>习水</country><country>正安</country><country>赤水</country></city>
+<city><country>金平区</country><country>龙湖区</country><country>濠江区</country><country>潮阳区</country><country>潮南区</country><country>澄海区</country><country>南澳县</country></city>
