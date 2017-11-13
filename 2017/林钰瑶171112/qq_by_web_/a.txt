@@ -1,0 +1,6 @@
+ 					var	co=count(receive);
+					
+// 					for(var i=0;i<co;i++){
+//						$t('textarea')[0].value="<?php echo $friend; ?>"+receive[i].time+"\r\n"+receive[i].con;
+// 					}
+8

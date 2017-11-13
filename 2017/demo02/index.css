@@ -1,0 +1,58 @@
+#sen p{
+	float:left;
+	line-height:5px;
+}
+#choice{/*方框*/
+	float:left;
+	width:90px;
+	height:20px;
+	border:solid black 0.5px;
+	position:relative;
+}
+#fes{
+	width:70px;
+	height:15px;
+	 float:left;
+	padding-right:0px;
+}
+#choice img{
+	 float:right;
+
+}
+#choice ul{
+	position:absolute;
+	left:0px;
+	top:10px;
+	width:90px;
+	height:40px;
+	padding:0px;
+	border:solid black;
+	display:none; 
+	
+}
+#choice ul li{	
+	display:block;
+	list-style:none;
+	text-align:center;
+	width:90px;
+	height:20px;	
+}
+#choice ul li:first-child{
+	border-bottom:solid 1px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,177 @@
+*{
+	margin:0;
+	padding:0;
+	list-style-type:none;
+	font-size:13px;
+	font-family:'Helvetica Neue',Helvetica,Arial,Sans-serif;
+}
+body {
+	background-image: url(img/mybody_bg.jpg);
+}
+ 
+#all_wrap {
+	width: 958px;
+	margin: 0px auto;
+	background-image: url(img/mybody_main_bg.gif);
+}
+
+#header h1 {
+	font-size: 36px;
+	line-height:70px;
+}
+
+
+#header {
+	margin: 0px auto;
+	width: 916px;
+}
+
+
+#content {
+	margin: 0px auto;
+	width: 916px;
+	border: 1px solid #3683D8;
+}
+.item {
+	margin: 0px auto;
+	width: 896px;
+	border-bottom-width: 1px;
+	border-bottom-style: dashed;
+	border-bottom-color: #900;
+	clear:both;
+}
+.a {
+	float: left;
+	width:60px;
+	margin-top:5px;
+}
+
+
+.n,.t,.m{
+	line-height:30px;
+}
+.n {
+	float: left;
+	color:#00F;
+	padding-right:5px;
+}
+.t{
+	color:#666;
+}
+.o {
+	float: right;
+}
+.m{
+	padding-left:60px;
+	padding-right:30px;
+	word-break:break-all;
+}
+
+
+
+
+
+.form_line{
+	clear:both;
+	margin-top:10px;
+}
+.form_box {
+	margin: 0px auto;
+	width: 890px;
+}
+.form_text {
+	float: left;
+	width: 80px;
+	text-align:right;
+}
+#form_select_avater label {
+	width: 60px;
+	display: block;
+	float: left;
+	text-align: center;
+	cursor: pointer;
+}
+.form_input textarea {
+	width: 500px;
+	height: 70px;
+}
+
+
+
+#submit_0{
+	width:100px;
+	height:30px;
+	}
+
+
+#footer{
+margin: 0px auto;
+	width: 896px;
+	}
+.footer_message {
+	line-height: 40px;
+	
+}
+.pagination {
+	text-align: center;
+	margin:10px auto 10px auto;
+}
+.pagination a {
+	display: inline-block;
+	border: 1px solid #00F;
+	padding-right: 8px;
+	padding-left: 8px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	text-decoration: none;
+	color: #900;
+	margin-right: 4px;
+}
+
+.pagination a:hover{
+	border-color:#F0F;
+	color:#000;
+	}
+.login_button {
+	float: right;
+}
+#submit_1 {
+	width: 60px;
+}
+.login_form form label {
+	float: left;
+	display: block;
+	width: 220px;
+}
+.login_form {
+	padding-top: 20px;
+}
+.login_form form {
+	display: block;
+	border: 1px dashed #F0F;
+	width:520px;
+	padding-top:10px;
+	padding-bottom:10px;
+	padding-left:3px;
+}
+.welcome_info {
+	color: #900;
+	float: right;
+}
+.r {
+	color: #F00;
+}
+
+
+.retime{
+	color:#666;
+	}
+
+
+
+.login_button a{
+	text-decoration:none;
+	}
+#login_form{
+	
+	display:none;}

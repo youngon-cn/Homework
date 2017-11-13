@@ -1,0 +1,16 @@
+<province><city>汕头</city><city>汕头</city><city>汕头</city><city>汕头</city><city>汕头</city><city>汕头</city><city>汕头</city><city>广州</city><city>广州</city><city>广州</city><city>广州</city><city>广州</city><city>广州</city><city>广州</city><city>广州</city><city>揭阳</city><city>揭阳</city><city>揭阳</city></province>
+<province><city>金华</city><city>杭州</city></province>
+<province><city>汕头</city><city>广州</city><city>揭阳</city></province>
+<province><city>金华</city><city>杭州</city></province>
+<province><city>汕头</city><city>广州</city><city>揭阳</city></province>
+<province><city>汕头</city><city>广州</city><city>揭阳</city></province>
+<province><city>金华</city><city>杭州</city></province>
+<province><city>汕头</city><city>广州</city><city>揭阳</city></province>
+<province><city>汕头</city><city>广州</city><city>揭阳</city></province>
+<province><city>金华</city><city>杭州</city></province>
+<province><city>金华</city><city>杭州</city></province>
+<province><city>汕头</city><city>广州</city><city>揭阳</city></province>
+<province><city>金华</city><city>杭州</city></province>
+<province><city>金华</city><city>杭州</city></province>
+<province><city>遵义</city><city>贵阳</city><city>安顺</city></province>
+<province><city>汕头</city><city>广州</city><city>揭阳</city></province>
