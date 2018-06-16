@@ -15,6 +15,6 @@
 
 ## 一些学习资料 
 ### Interview-Notebook ([Interview-Notebook](https://github.com/CyC2018/Interview-Notebook))
-###  计算机速成课 [计算机速成课](https://github.com/1c7/crash-course-computer-science-chinese)
-### TypeScript使用手册 [ypeScript使用手册]((https://github.com/zhongsp/TypeScript))
-### architect-awesome [architect-awesome ](https://github.com/xingshaocheng/architect-awesome)
+###  计算机速成课 ([计算机速成课](https://github.com/1c7/crash-course-computer-science-chinese))
+### TypeScript使用手册 ([TypeScript使用手册](https://github.com/zhongsp/TypeScript))
+### architect-awesome ([architect-awesome ](https://github.com/xingshaocheng/architect-awesome))
