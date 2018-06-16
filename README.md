@@ -13,7 +13,7 @@
 ### Git Flow（[详细介绍](http://www.ruanyifeng.com/blog/2015/12/git-workflow.html)）
 
 
-# 一些学习资料 
+## 一些学习资料 
 ### Interview-Notebook ([Interview-Notebook](https://github.com/CyC2018/Interview-Notebook))
 ###  计算机速成课 ([计算机速成课](https://github.com/1c7/crash-course-computer-science-chinese))
 ### TypeScript使用手册 ([TypeScript使用手册](https://github.com/zhongsp/TypeScript))
