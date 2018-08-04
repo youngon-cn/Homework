@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>无无无</title>
+		<style>
+			* {
+				padding: 0;
+				margin: 0;
+			}
+			
+			#div1 {
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				left: 600px;
+				top: 50px;
+			}
+			
+			#div2 {
+				width: 1px;
+				height: 300px;
+				position: absolute;
+				left: 300px;
+				top: 0;
+				background: black;
+			}
+			
+			#div3 {
+				width: 1px;
+				height: 300px;
+				position: absolute;
+				left: 100px;
+				top: 0;
+				background: black;
+			}
+			
+			#ba {
+				margin-top: 0;
+				margin-left: 0;
+			}
+			
+			#bb {
+				margin-top: 30px;
+				margin-left: 0;
+			}
+		</style>
+		<script>
+			var timer = null;
+
+			function startMove(iTarget) {
+				var oDiv = document.getElementById('div1');
+
+				clearInterval(timer);
+				timer = setInterval(function() {
+					var speed = 0;
+
+					if(oDiv.offsetLeft < iTarget) {
+						speed = 7;
+					} else {
+						speed = -7;
+					}
+
+					if(Math.abs(iTarget - oDiv.offsetLeft) <= 7) {
+						clearInterval(timer);
+
+						oDiv.style.left = iTarget + 'px';
+					} else {
+						oDiv.style.left = oDiv.offsetLeft + speed + 'px';
+					}
+				}, 30);
+			}
+		</script>
+	</head>
+
+	<body>
+		<input id="ba" type="button" value="到100" onclick="startMove(100)" />
+		<input id="bb" type="button" value="到300" onclick="startMove(300)" />
+		<div id="div1"></div>
+		<div id="div2"></div>
+		<div id="div3"></div>
+	</body>
+
+</html>
