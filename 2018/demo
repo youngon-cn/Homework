@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title>缓冲运动</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			#ni {
+				width: 100px;
+				height: 100px;
+				background-color: cornflowerblue;
+				position: absolute;
+				left: 100px;
+				top: 100px;
+			}
+			
+			#ki {
+				width: 1px;
+				height: 300px;
+				position: absolute;
+				left: 500px;
+				top: 0;
+				background-color: black;
+			}
+			
+			input {
+				margin-left: 120px;
+				margin-top: 30px;
+			}
+		</style>
+		<script>
+			function show() {
+				var ba = document.getElementById('ni');
+				setInterval(function() {
+					var speed = (500 - ba.offsetLeft) / 10;
+					speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+					ba.style.left = ba.offsetLeft + speed + 'px';
+
+				}, 30);
+
+				function we() {
+					var speed = (500 - ba.offsetLeft) / 10;
+
+					ba.style.left = ba.offsetLeft + speed + 'px';
+
+				};
+			};
+		</script>
+	</head>
+
+	<body>
+		<input type="button" value="缓缓的" onclick="show()" />
+		<div id="ni"></div>
+		<div id="ki"></div>
+	</body>
+
+</html>

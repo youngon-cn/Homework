@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>扫雷</title>
+</head>
+<body>
+    <script>
+        function Set(r,c,hard){
+            var data = new Array();
+            for(var i=0;i<r;i++){data[i]=new Array(c);}
+            for (var i = 0; i < r*c; i++)
+            {
+                var ran=Math.floor(Math.random()*100);
+                data[Math.floor(i / c)][i % c] =ran<hard?1:0;    
+            }
+            return data;
+        }
+         
+        function GetNewData(data,r,c){
+            var newdata = new Array();
+            for(var i=0;i<r;i++){newdata[i]=new Array(c);}
+            for (var i = 0; i < r * c; i++)
+            {
+                if (data[Math.floor(i / c)][i % c] == 1)
+                {
+                    newdata[Math.floor(i / c)][i % c] = 9;
+                }
+                else
+                {
+                    var d = 0;
+                    for (var j = 0; j < 9; j++)
+                    {
+                        if (Math.floor(i / c) + (Math.floor(j / 3) - 1)>=0 && i % c + (j % 3 - 1) >= 0 &&
+                            Math.floor(i / c) + (Math.floor(j / 3) - 1) < r && i % c + (j % 3 - 1) < c &&
+                            data[Math.floor(i / c) + Math.floor(j / 3 - 1)][i % c + (j % 3 - 1)] == 1)
+                        {
+                            d++;
+                        }
+                    }
+                    newdata[Math.floor(i / c)][i % c] = d;
+                }
+            }
+            return newdata;
+        }
+        function GetRegion(rr,cc,data,list){
+            if (data[rr][cc]!=0)
+            {
+                return;
+            }
+            else
+            {
+                for (var j = 0; j < 9; j++)
+                {
+                    if (rr+ (Math.floor(j / 3) - 1)>=0 && cc + (j % 3 - 1) >= 0 &&
+                        rr + (Math.floor(j / 3) - 1) < r && cc + (j % 3 - 1) < c &&
+                        data[rr+ Math.floor(j / 3 - 1)][cc+ (j % 3 - 1)] == 0)
+                    {
+                        var pr=rr+ Math.floor(j / 3 - 1);
+                        var pc=cc+ (j % 3 - 1);
+                        console.log(pr,pc);
+                        if(contains(list,{r:pr,c:pc}))continue;
+                        list.push({r:pr,c:pc});
+                        GetRegion(pr,pc,data,list);
+                    }
+                }
+                return; 
+            }
+        }
+    </script>
+    <h2>扫雷游戏</h2>
+    <p>难度:
+        <select NAME="Difficulty" onchange="load(this.value)" id="Difficulty">
+        <option value></option>
+        <option value="1" selected="selected">初9*9</option>
+        <option value="2" >中16*16</option>
+        <option value="3">高30*16</option>
+        </select>
+        <button onclick="timedCount()">开始</button>
+        <button onclick="stop()">停止</button>
+        <button onclick="reload()">重置</button>
+        <button onclick="Drawall()">显示所有</button>
+        <input type="text" readonly="readonly" id="time">
+    </p>
+    <p>
+        <canvas id="myCanvas" oncontextmenu=self.event.returnvalue=false width="180" height="180" style="border:1px solid #000000;background:lightgray;"></canvas>
+    </p>
+    <script>
+        var r=9;
+        var c=9;
+        var difficulty=15
+        var tempdata;
+        var minedata;
+        var signdata = new Array();
+        var checkSigndata=new Array
+        document.write("<br/>");
+        var Difficulty=document.getElementById("Difficulty");
+        Difficulty.options[1].selected = true;  
+         
+        var canvas=document.getElementById("myCanvas");
+        canvas.addEventListener("mousedown", doMouseDown, false); 
+        canvas.oncontextmenu=function(){return false;}
+        load(1);
+        redraw();
+        //test();
+         
+        //Drawall();
+        var t;
+        var tick=0;
+        function timedCount(){
+            document.getElementById('time').value=tick
+            tick=tick+1
+            t=setTimeout("timedCount()",1000)
+        }
+        function stop(){
+            if(t!=null)clearTimeout(t);
+            tick=0;
+        }
+        function loadsigndata(){
+            for(var i=0;i<r;i++){signdata[i]=new Array(c);}
+            for(var i=0;i<r;i++){checkSigndata[i]=new Array(c);    }
+            for (var i = 0; i < r*c; i++)
+            {
+                switch(minedata[Math.floor(i / c)][i % c])
+                {
+                    case 9:checkSigndata[Math.floor(i / c)][i % c]=2;
+                        break;
+                    case 0:checkSigndata[Math.floor(i / c)][i % c]=3;
+                        break;
+                    default:checkSigndata[Math.floor(i / c)][i % c]=1;
+                        break;
+                }
+            }
+             
+        }
+        function test(){
+            for (var i = 0; i < r*c; i++)
+            {
+                document.write(minedata[Math.floor(i / c)][i % c]+"&nbsp");
+                if(i%c==c-1)document.write("<br/>");
+            }
+        }
+        function load(v){
+            switch(parseInt(v))
+            {
+                case 1:
+                    r=9;
+                    c=9;
+                    break;
+                case 2:
+                    r=16;
+                    c=16;
+                    break;
+                case 3:
+                    r=30;
+                    c=16;
+                    break;
+            }
+            reload();
+            //Drawall();
+        }
+        function reload(){
+            redraw();
+            tempdata=Set(r,c,difficulty);
+            minedata=GetNewData(tempdata,r,c);
+            loadsigndata();
+        }
+        function redraw(){
+            canvas.setAttribute('width',c*30);
+            canvas.setAttribute('height',r*30);
+            var ctx=canvas.getContext("2d");
+            for(var i=0;i<r+1;i++)
+            {
+                ctx.moveTo(0,i*30);
+                ctx.lineTo(c*30,i*30);
+                ctx.stroke();        
+            }
+            for(var i=0;i<c+1;i++)
+            {
+                ctx.moveTo(i*30,0);
+                ctx.lineTo(i*30,r*30);
+                ctx.stroke();        
+            }
+             
+        }
+        function contains(arr, obj) {  
+            var i = arr.length;  
+            while (i--) {  
+                if (arr[i].r==obj.r&&arr[i].c==obj.c) {  
+                    return true;  
+                }  
+            }  
+            return false;  
+        }
+        var plist=new Array();
+        function doMouseDown(event){
+            var btnNum = event.button;
+            var x = event.pageX;
+            var y = event.pageY;
+            var loc = getPointOnCanvas(canvas, x, y);
+            var xx=Math.floor(loc.x/30);
+            var yy=Math.floor(loc.y/30);
+            if(signdata[yy]!=null&&signdata[yy][xx]!=null&&(signdata[yy][xx]==3||signdata[yy][xx]==1))return;
+            if (btnNum==0)
+            {
+                drawCell(xx,yy);
+                plist.splice(0,plist.length);
+                GetRegion(yy,xx,minedata,plist);
+                for(var l=0;l<plist.length;l++){drawCell(plist[l].c,plist[l].r);}
+            }
+            else if(btnNum==2)
+            {
+                drawCellr(xx,yy);
+            }
+            if(check())alert("成功："+tick);
+        }
+        function check(){
+            for (var i = 0; i < r*c; i++)
+            {
+                if(checkSigndata[Math.floor(i / c)][i % c]!=signdata[Math.floor(i / c)][i % c])
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        function drawCell(xx,yy){
+            var ctx = canvas.getContext("2d");
+            ctx.textAlign = "start";
+            ctx.fillStyle = "red";
+            ctx.font = "30px Arial";
+            if(signdata[yy][xx]!=null && signdata[yy][xx]==    2)
+            {
+                ctx.fillStyle = "lightgray";
+                ctx.fillRect(xx*30,yy*30,29,29);
+            }
+            ctx.fillStyle = "red";
+            if(minedata[yy][xx]==9){
+                //ctx.fillText("×",xx*30,(yy+1)*30);
+                alert("失败");
+                Drawall();
+                //signdata[yy][xx]=2;
+            }
+            else if(minedata[yy][xx]==0){
+                //ctx.fillText("0",xx*30,(yy+1)*30);
+                ctx.fillStyle = "green";
+                ctx.fillRect(xx*30,yy*30,29,29);
+                signdata[yy][xx]=3;
+            }
+            else{
+                ctx.fillText(minedata[yy][xx].toString(),xx*30,(yy+1)*30);
+                signdata[yy][xx]=1;
+            }
+        }
+        function drawCellr(xx,yy){
+            var ctx = canvas.getContext("2d");
+            ctx.textAlign = "start";
+            ctx.fillStyle = "red";
+            ctx.font = "30px Arial";
+            if(signdata[yy][xx]==0||signdata[yy][xx]==null)
+            {
+                ctx.fillText("√",xx*30,(yy+1)*30);
+                signdata[yy][xx]=2;
+            }
+            else
+            {
+                ctx.fillStyle = "lightgray";
+                ctx.fillRect(xx*30,yy*30,29,29);
+                //ctx.fillText("√",xx*30,(yy+1)*30);
+                signdata[yy][xx]=0;
+            }
+            ctx.stroke();
+             
+        }
+        function getPointOnCanvas(canvas, x, y) {  
+            var bbox = canvas.getBoundingClientRect();  
+            return { x: x - bbox.left * (canvas.width  / bbox.width),  
+                    y: y - bbox.top  * (canvas.height / bbox.height)  
+                    };  
+        } 
+        function Drawall(){
+            redraw();
+            var ctx = canvas.getContext("2d");
+            ctx.textAlign = "start";
+            ctx.fillStyle = "red";
+            ctx.font = "30px Arial";
+            for(var i=0;i<r*c;i++)
+            {
+                var x=i%c*30;
+                var y=(Math.floor(i/c)+1)*30;
+                if(minedata[Math.floor(i/c)][i%c]==9){ctx.fillText("×",x,y);}
+                else if(minedata[Math.floor(i/c)][i%c]==0){ctx.fillText("0",x,y);}
+                else{ctx.fillText(minedata[Math.floor(i/c)][i%c].toString(),x,y);}
+             
+            }
+        }
+    </script>
+</body>
+ 
+</html>
