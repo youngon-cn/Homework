@@ -1,0 +1,38 @@
+import React, { Component } from 'react';
+import logo from './logo.svg';
+import './App.css';
+
+class App extends React.Component {
+
+constructor(props){
+  super(props);
+  this.state = {
+    count:0
+  }
+}
+
+lhandClick(){
+  this.setState({
+      count:this.state.count+1
+    })
+}
+
+rhandClick(){
+  this.setState({
+      count:this.state.count-1
+    })
+}
+
+  render() {
+    return (
+      <div className="App">
+        <button onClick={this.lhandClick.bind(this)} >+</button>
+        <button onClick={this.rhandClick.bind(this)}>-</button>
+        <span>当前点击次数</span>
+        <span>{this.state.count}</span>
+      </div>
+    );
+  }
+}
+
+export default App;
