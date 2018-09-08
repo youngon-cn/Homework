@@ -1,0 +1,115 @@
+#author = liuwei date = 2018-09-02
+import pymysql
+from book import *
+
+__metaclass__ = type
+class DBHelper:
+    def getCon(self):
+       
+        conn = pymysql.connect(host = "localhost", port = 3306, user = "root", password = "201392260", db = "library", charset = "utf8")
+
+        return conn
+
+    def insertBook(self, book):
+        
+        sql = "insert into book(name, author, content, add_date) values(%s, %s, %s, %s)"
+
+        conn = self.getCon();
+        if conn ==None:
+            return
+
+        cursor = conn.cursor()
+        cursor.execute(sql, (book.getBookName(), book.getAuthor(), book.getContent(), book.getAddDate()))
+
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+        new_id = cursor.lastrowid
+        print("新插入键值id为:", new_id)
+
+        return new_id
+
+    def getAllBook(self):
+       
+        sql = "select *from book"
+
+        conn = self.getCon()
+        if conn == None:
+            return
+
+        cursor = conn.cursor()
+        rownum = cursor.execute(sql)              
+
+        
+        rows = cursor.fetchall()
+        list = []
+
+        for item in rows:
+            bitem = (item[0], item[1], str(item[4]))
+
+            list.append(bitem)
+
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+        return list
+
+    def getBookById(self, bookid):
+        
+
+        sql = "select book.name, book.author, book.content from book  where id=%s"
+
+        conn = self.getCon()
+        if conn == None:
+            return
+
+        cursor = conn.cursor()
+        cursor.execute(sql, (bookid, ))                    
+        row = cursor.fetchone()                             
+
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+        return row                                          
+
+
+    def saveUpdate(self, bookid, book):
+        
+        sql = "update book set book.name=%s, book.author=%s, book.content=%s where book.id=%s"
+
+        conn = self.getCon()
+        if conn == None:
+            return
+
+        cursor = conn.cursor()
+        cursor.execute(sql, (book.getBookName(), book.getAuthor(), book.getContent(), bookid))
+
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+    def deleteBook(self, bookid):
+       
+        sql = "delete from book where book.id = %s"
+
+        conn = self.getCon()
+        if conn == None:
+            return
+
+        cursor = conn.cursor()
+        cursor.execute(sql, (bookid, ))
+
+        conn.commit()
+        cursor.close()
+        conn.close()
+
+if __name__ == '__main__':
+    db = DBHelper()
+    #book = Book("西游记", "吴承恩", "讲述的是当年唐僧去西天拜佛求经的故事")
+    #db.insertBook(book)
+    list = db.getAllBook()
+    for item in list:
+        print(item)
