@@ -1,0 +1,299 @@
+import wx
+from book import *
+from dbhelper import *
+
+__metaclass__ = type
+
+class AddFrame(wx.Frame):
+    
+    def __init__(self, parent, title):
+        
+        self.mainframe = parent
+        
+        wx.Frame.__init__(self, parent, title = title, size = (400, 250))
+
+        self.panel = wx.Panel(self, pos = (0, 0), size = (400, 250))
+        self.panel.SetBackgroundColour("#FFFFFF")                              
+
+       
+        bookName_tip = wx.StaticText(self.panel, label = "书名:", pos = (5, 8), size = (35, 25))
+        bookName_tip.SetBackgroundColour("#FFFFFF")
+        bookName_text = wx.TextCtrl(self.panel, pos = (40, 5), size = (340, 25))
+        self.name = bookName_text
+
+        author_tip = wx.StaticText(self.panel, label = "作者:", pos = (5, 38), size = (35, 25))
+        author_tip.SetBackgroundColour("#FFFFFF")
+        author_text = wx.TextCtrl(self.panel, pos = (40, 35), size = (340, 25))
+        self.author = author_text
+
+        content_tip = wx.StaticText(self.panel, label = "内容:", pos = (5, 68), size = (340, 25))
+        content_tip.SetBackgroundColour("#FFFFFF")
+        content_text = wx.TextCtrl(self.panel, pos = (40, 65), size = (340, 100), style = wx.TE_MULTILINE)
+        self.content = content_text
+
+        save_button = wx.Button(self.panel, label = "保存书籍", pos = (160, 170))
+        self.Bind(wx.EVT_BUTTON, self.saveBook, save_button)
+
+       
+        self.dbhelper = DBHelper()
+
+
+    def saveBook(self, evt):
+        
+        bookName = self.name.GetValue()
+        author = self.author.GetValue()
+        content = self.content.GetValue()
+
+        print("书名:"+bookName)
+        if bookName == "" or author == "" or content == "":
+            print("进来了")
+            warn = wx.MessageDialog(self, message = "所有信息不能为空！！！", caption = "错误警告", style = wx.YES_DEFAULT | wx.ICON_ERROR)
+            warn.ShowModal()                                                             
+            warn.Destroy()
+            return
+        else:
+            print("开始插入到数据库中")
+            book = Book(bookName, author, content)
+            book_id = self.dbhelper.insertBook(book)
+            self.mainframe.addToList(book_id, book)
+
+        self.Destroy()
+
+
+class UpdateFrame(wx.Frame):
+    def __init__(self, parent, title, select_id):
+        
+
+        wx.Frame(parent, title = title, size = (400, 250))
+
+        
+        self.mainframe = parent
+       
+        wx.Frame.__init__(self, parent, title = title, size = (400, 250))
+
+        self.panel = wx.Panel(self, pos = (0, 0), size = (400, 250))
+        self.panel.SetBackgroundColour("#FFFFFF")                             
+        
+        bookName_tip = wx.StaticText(self.panel, label = "书名:", pos = (5, 8), size = (35, 25))
+        bookName_tip.SetBackgroundColour("#FFFFFF")
+        bookName_text = wx.TextCtrl(self.panel, pos = (40, 5), size = (340, 25))
+        self.name = bookName_text
+
+        author_tip = wx.StaticText(self.panel, label = "作者:", pos = (5, 38), size = (35, 25))
+        author_tip.SetBackgroundColour("#FFFFFF")
+        author_text = wx.TextCtrl(self.panel, pos = (40, 35), size = (340, 25))
+        self.author = author_text
+
+        content_tip = wx.StaticText(self.panel, label = "内容:", pos = (5, 68), size = (340, 25))
+        content_tip.SetBackgroundColour("#FFFFFF")
+        content_text = wx.TextCtrl(self.panel, pos = (40, 65), size = (340, 100), style = wx.TE_MULTILINE)
+        self.content = content_text
+
+        save_button = wx.Button(self.panel, label = "保存修改", pos = (160, 170))
+        self.Bind(wx.EVT_BUTTON, self.saveUpdate, save_button)
+
+        #选中的id和bookid
+        self.select_id = select_id
+        self.bookid = self.mainframe.list.GetItem(select_id, 0).Text            
+        print(select_id, self.bookid)
+       
+        self.dbhelper = DBHelper()
+        self.showAllText()                     
+
+
+    def showAllText(self):
+        
+        data = self.dbhelper.getBookById(self.bookid)                      
+
+        self.name.SetValue(data[0])                                       
+        self.author.SetValue(data[1])
+        self.content.SetValue(data[2])
+
+    def saveUpdate(self, evt):
+        
+        bookName = self.name.GetValue()                                   
+        author = self.author.GetValue()
+        content = self.content.GetValue()
+
+        print("书名:"+bookName)
+        if bookName == "" or author == "" or content == "":
+            print("进来了")
+            warn = wx.MessageDialog(self, message = "所有信息不能为空！！！", caption = "错误警告", style = wx.YES_DEFAULT | wx.ICON_ERROR)
+            warn.ShowModal()                                                             
+            warn.Destroy()
+            return
+        else:
+            print("开始将修改后的数据保存到数据库中")
+            book = Book(bookName, author, content)                         
+            self.dbhelper.saveUpdate(self.bookid, book)
+            self.mainframe.list.SetItem(self.select_id, 1, bookName)
+
+        self.Destroy()                                                     
+
+class ShowFrame(wx.Frame):
+    
+
+    def __init__(self, parent, title, select_id):
+       
+        self.mainframe = parent
+
+        
+        wx.Frame.__init__(self, parent, title = title, size = (400, 250))
+
+        self.panel = wx.Panel(self, pos = (0, 0), size = (400, 250))
+        self.panel.SetBackgroundColour("#FFFFFF")                              
+
+        
+        bookName_tip = wx.StaticText(self.panel, label = "书名:", pos = (5, 8), size = (35, 25))
+        bookName_tip.SetBackgroundColour("#FFFFFF")
+        bookName_text = wx.TextCtrl(self.panel, pos = (40, 5), size = (340, 25))
+        bookName_text.SetEditable(False)
+        self.name = bookName_text
+
+        author_tip = wx.StaticText(self.panel, label = "作者:", pos = (5, 38), size = (35, 25))
+        author_tip.SetBackgroundColour("#FFFFFF")
+        author_text = wx.TextCtrl(self.panel, pos = (40, 35), size = (340, 25))
+        author_text.SetEditable(False)
+        self.author = author_text
+
+        content_tip = wx.StaticText(self.panel, label = "内容:", pos = (5, 68), size = (340, 25))
+        content_tip.SetBackgroundColour("#FFFFFF")
+        content_text = wx.TextCtrl(self.panel, pos = (40, 65), size = (340, 100), style = wx.TE_MULTILINE)
+        content_text.SetEditable(False)
+        self.content = content_text
+
+        
+        self.select_id = select_id
+        self.bookid = self.mainframe.list.GetItem(select_id, 0).Text             
+
+        
+        self.dbhelper = DBHelper()
+        self.showAllText()                    
+
+    def showAllText(self):
+        
+        data = self.dbhelper.getBookById(self.bookid)                      
+        self.name.SetValue(data[0])                                       
+        self.author.SetValue(data[1])
+        self.content.SetValue(data[2])
+
+
+
+class LibraryFrame(wx.Frame):
+    def __init__(self, parent, title):
+        
+
+       
+        wx.Frame.__init__(self, parent, title=title, size=(400, 400))  
+
+        
+        self.main_layout = wx.BoxSizer(wx.VERTICAL)
+
+
+        
+        self.list = wx.ListCtrl(self, -1, size = (400,300), style = wx.LC_REPORT | wx.LC_HRULES | wx.LC_VRULES) #| wx.LC_SINGLE_SEL
+        
+        self.list.InsertColumn(0, "ID")
+        self.list.InsertColumn(1, "书名")
+        self.list.InsertColumn(2, "添加日期")
+        
+        self.list.SetColumnWidth(0, 60)                                         
+        self.list.SetColumnWidth(1, 230)
+        self.list.SetColumnWidth(2, 92)
+
+        
+        self.panel = wx.Panel(self, pos = (0, 300), size = (400, 100))
+
+        
+        add_button = wx.Button(self.panel, label = "添加", pos = (10, 15), size = (60, 30))    #, size = (75, 30)
+        del_button = wx.Button(self.panel, label = "删除", pos = (110, 15), size = (60, 30))    #, size = (75, 30)
+        update_button = wx.Button(self.panel, label = "修改", pos = (210, 15), size = (60, 30)) #, size = (75, 30)
+        query_button = wx.Button(self.panel, label = "查看", pos = (310, 15), size = (60, 30))  #, size = (75, 30)
+        
+        self.Bind(wx.EVT_BUTTON, self.addBook, add_button)
+        self.Bind(wx.EVT_BUTTON, self.delBook, del_button)
+        self.Bind(wx.EVT_BUTTON, self.updateBook, update_button)
+        self.Bind(wx.EVT_BUTTON, self.queryBook, query_button)
+
+        
+        self.main_layout.Add(self.list, 3)
+        self.main_layout.Add(self.panel, 1)
+
+        self.SetSizer(self.main_layout)
+
+       
+        self.dbhelper = DBHelper()
+        datas = self.dbhelper.getAllBook()
+
+        for data in datas:
+            index = self.list.InsertItem(self.list.GetItemCount(), str(data[0]))
+            self.list.SetItem(index, 1, data[1])
+            self.list.SetItem(index, 2, data[2])
+
+
+    def addBook(self, evt):
+        
+        add_f = AddFrame(self, "添加书籍窗口")
+        add_f.Show(True)
+
+
+    def delBook(self, evt):
+        
+        selectId = self.list.GetFirstSelected()
+        if selectId == -1:
+            warn = wx.MessageDialog(self, message = "未选中任何条目！！！", caption = "错误警告", style = wx.YES_DEFAULT | wx.ICON_ERROR)
+            warn.ShowModal()                                                            
+            warn.Destroy()
+            return
+        else:
+            bookid = self.list.GetItem(selectId, 0).Text                                
+            self.list.DeleteItem(selectId)                                               
+            self.dbhelper.deleteBook(bookid)
+
+
+
+    def updateBook(self, evt):
+        
+        selectId = self.list.GetFirstSelected()
+        if selectId == -1:
+            warn = wx.MessageDialog(self, message = "未选中任何条目！！！", caption = "错误警告", style = wx.YES_DEFAULT | wx.ICON_ERROR)
+            warn.ShowModal()                                                             
+            warn.Destroy()
+            return
+        else:
+            update_f = UpdateFrame(self, "修改书籍窗口", selectId)
+            update_f.Show(True)
+
+    def queryBook(self, evt):
+       
+        selectId = self.list.GetFirstSelected()
+        if selectId == -1:
+            warn = wx.MessageDialog(self, message = "未选中任何条目！！！", caption = "错误警告", style = wx.YES_DEFAULT | wx.ICON_ERROR)
+            warn.ShowModal()                                                             
+            warn.Destroy()
+            return
+        else:
+            show_f = ShowFrame(self, "修改书籍窗口", selectId)
+            show_f.Show(True)
+
+    def addToList(self, id, book):
+        index = self.list.InsertItem(self.list.GetItemCount(), str(id))
+        self.list.SetItem(index, 1, book.getBookName())
+        self.list.SetItem(index, 2, str(book.getAddDate()))
+
+
+
+AppBaseClass = wx.App
+
+class LibraryApp(AppBaseClass):
+    def OnInit(self):
+        frame = LibraryFrame(None, "library-system")
+        frame.Show()
+
+        return True
+
+
+
+if __name__ == "__main__":
+    app = LibraryApp()
+    app.MainLoop()
