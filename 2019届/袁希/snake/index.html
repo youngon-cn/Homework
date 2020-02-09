@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Snake</title>
+		<style type="text/css">
+			.map{
+				width: 800px;
+				height: 600px;
+				background-color: aliceblue;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="map">
+			
+		</div>
+		<script src="js/snake.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			//初始化游戏对象
+			var gm = new Game(document.querySelector(".map"));
+			//初始化游戏---开始游戏
+			gm.init();
+		</script>
+	</body>
+</html>
