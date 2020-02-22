@@ -1,0 +1,78 @@
+body{
+	margin: 0;
+}
+.view{
+	margin: auto;
+	padding: 15px;
+	overflow: hidden;
+	width: 500px;
+	height: 450px;
+	border: powderblue 10px solid;
+	background-color: aliceblue;
+}
+#registration{
+	width: 500px;
+	height: 450px;
+	text-align: center;
+}
+#conversation{
+	width: 500px;
+	height: 450px;
+	float: left;
+	display: none;
+	text-align: center;
+}
+#select{
+	width: 500px;
+	height: 450px;
+	float: left;
+	display: none;
+}
+#message{
+	margin: auto;
+	width: 500px;
+	height: 100px;
+}
+#failure{
+	margin: auto;
+	padding-top: 1px;
+	text-align: center;
+	width: 500px;
+	height: 100px;
+	display: none;
+}
+legend{
+	font-size: 20px;
+	font-family: "楷体";
+	color: cadetblue;
+}
+label{
+	font-size: 20px;
+	font-family: "arial narrow";
+	color: cadetblue;
+}
+textarea{
+	margin: auto;
+	width: 100px;
+	height: 20px;
+}
+#registration p{
+	color: cornflowerblue;
+	font-size: 20px;
+	font-family: "arial narrow";
+}
+#conversation p{
+	font-size: 20px;
+	font-family: "楷体";
+	color: #5F9EA0;
+}
+#message p{
+	font-family: "微软雅黑";
+	font-size: 18px;
+	color: deepskyblue;
+}
+#failure p{
+	font-size: 25px;
+	font-family: "楷体";
+	color: dimgray;
+}

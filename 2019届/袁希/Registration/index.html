@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Register</title>
+		<link rel="stylesheet" type="text/css" href="css/registration.css"/>
+	</head>
+	<body>
+		<div class='view'>
+			<div id='registration'>
+				<legend>请输入你的个人信息：</legend>
+				<form id="form" action="#0" onsubmit="return false;">
+					<p><label>Name: <input name="name"></label></p>
+					<p><label>Email: <input name="email"></label></p>
+					<p><label>QQ: <input name="QQ"></label></p>
+					<p>Gender: <label><input name="gender" type="radio" value="m" checked> Male</label> <label><input name="gender" type="radio" value="f"> Female</label></p>
+					<p><label>City: <select name="city">
+						<option value="BJ" selected>Beijing</option>
+						<option value="SH">Shanghai</option>
+						<option value="CD">Chengdu</option>
+						<option value="TJ">Tianjin</option>
+					</select></label></p>
+					<p><button name='submit' type="submit">Enter</button></p>
+				</form>
+				<h3>Welcome to new world !</h3>
+				<p>Enter together and find something interesting !</p>
+			</div>
+			<div id='select'>
+				<form id="test-form" action="test" onsubmit="return false;">
+					<legend>你觉得你是一个怎样的人</legend>
+					<legend>下列哪些词语符合你内心的自己：</legend>
+					<fieldset>
+						<p><label class="selectAll"><input type='checkbox'><span class='selectAll'>全选</span><span class="deselectAll">全不选</span></label><a href="#0" class='invertSelect'>反选</a></p>
+						<p><label><input type='checkbox' name='adj' value='active'>Active</label></p>
+						<p><label><input type='checkbox' name='adj' value='diplomatic'>Diplomatic</label></p>
+						<p><label><input type='checkbox' name='adj' value='precise'>Precise</label></p>
+						<p><label><input type='checkbox' name='adj' value='dashing'>Dashing</label></p>
+						<p><label><input type='checkbox' name='adj' value='humorous'>Humorous</label></p>
+						<p><label><input type='checkbox' name='adj' value='skeptical'>Skeptical</label></p>
+						<p><button name='submit' type="submit">Submit</button></p>
+					</fieldset>
+				</form>
+			</div>
+			<div id='conversation'>
+				<h1>Hi !</h1>
+				<p>我是袁希，一只计算机领域小白</p>
+				<p>目前就读TJCU（这样感觉好像高大上一点，嘿嘿）</p>
+				<p>刚刚踏入计科专业</p>
+				<p>比较自律，对新技术充满好奇心，喜欢钻研并分享自己的收获</p>
+				<div id='message'>
+					<p><有什么话想对我说吗>@X.</p>
+					<p>Message: </p>
+					<textarea id='words'></textarea>
+					<p><button name='submit' type="submit">Send</button></p>
+				</div>
+				<div id='failure'>
+					<p>骗你的啦，发送不出去哦 -_- !</p>
+				</div>
+			</div>
+		</div>
+		<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/register.js" type="text/javascript" charset="utf-8"></script>
+	</body>
+</html>
