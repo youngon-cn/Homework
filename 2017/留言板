@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+    <HTML>
+<Head>
+    <meta  http-equiv="CONTENT-TYPE" ; content="text/html"  ; charset="UTF-8">
+    <title>留言版</title>
+    <style type="text/css">
+     .message{
+         margin-top:0px;
+     }
+     h1{
+         margin-top:200px;
+     }
+    </style>
+</Head>
+<Body>
+   <h1 align="center">留言板</h1>
+   <div class="message">
+       <form name="addform" id="addform" method="post" action="new_file.php">
+           <table type="text" align="center" border="1px,solid">
+               <input type="hidden" id="id" name="id" />
+            <tr>
+               <td>标题</td>
+               <td><input type="text" name="title" id="title"/></td>
+            </tr>
+            <tr>
+                <td>作者</td>
+                <td><input type="text" name="author" id="author"/> </td>
+            </tr>
+            <tr>
+                <td>内容</td>
+                <td><textarea name="message" id="message" cols="60" role="15"></textarea></td>
+            </tr>
+            <tr>
+                <td><input type="submit" name="sumbit"/></td>
+                <td><input type="reset" name="reset"/></td>
+            </tr>
+           </table>
+       </form>
+   </div>
+</Body>
+</HTML>

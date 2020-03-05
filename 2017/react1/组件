@@ -1,0 +1,61 @@
+import React, { Component } from 'react';
+import logo from './logo.svg';
+import './App.css';
+
+class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      list: [
+        'tao',
+        'bao'
+      ],
+      inputValue:''
+    }
+  }
+
+  handClick(){
+    if (this.state.inputValue=='') {alert('请输入要添加项')}
+    else {
+      this.setState({
+      list: [...this.state.list,this.state.inputValue],
+      inputValue:''
+    })
+    }
+  }
+
+  handChange(a){
+    this.setState({
+      inputValue:a.target.value
+    })
+  }
+
+  handDelete(index){
+    const list = [...this.state.list];
+    list.splice(index,1);
+    this.setState({
+      list:list
+    })
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <div>
+          <input value={this.state.inputValue} onChange={this.handChange.bind(this)} />
+          <button onClick={this.handClick.bind(this)}>add</button>
+        </div>
+        <ul>
+          {
+            this.state.list.map((item,index) => {
+              return <li key={index} onClick={this.handDelete.bind(this,index)} >{item}</li>
+
+            })
+          }
+        </ul>
+      </div>
+    );
+  }
+}
+
+export default App;
