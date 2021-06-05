@@ -1,0 +1,398 @@
+a{
+	text-decoration: none;
+}
+.nav-one{
+	height: 30px;
+	background-color: #004094;
+}
+.nav-One-1 {
+	margin-left: 1200px;
+}
+
+.logo{
+	width: 250px;
+	margin-left: 10px;
+	margin-top: 10px;
+}
+
+.nav-Two {
+	margin-left: 700px;
+	margin-top: -20px;
+}
+.nav-Two a{
+	color: #687074;
+}
+.nav-Two span{
+	font-weight: bold;
+	text-decoration: none;
+}
+.nav-1{
+	float: left;
+	width: 80px;
+}
+.nav-2{
+	float: left;
+	width: 80px;
+}
+.nav-3{
+	float: left;
+	width: 80px;
+}
+.nav-4{
+	float: left;
+	width: 80px;
+}
+.nav-5{
+	float: left;
+	width: 80px;
+}
+.nav-6{
+	float: left;
+	width: 80px;
+}
+.nav-7{
+	float: left;
+	width: 80px;
+}
+.nav-8{
+	float: left;
+	width: 80px;
+}
+.nav-9{
+	float: left;
+	width: 80px;
+}
+.nav1drop{
+	display: none;
+	position: absolute;
+	background-color: white;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	width:210px;
+	z-index: 2;
+}
+.nav1drop a{
+	color: black;
+	padding: 6px 10px;
+	text-decoration: none;
+	display: block;
+	border-top:1px solid #C9C9C9 ;
+}
+.nav1drop a:hover{
+	background-color: #555;
+	color:white;
+}
+.nav-1:hover .nav1drop{
+	display: block;
+}
+.nav2drop{
+	display: none;
+	position: absolute;
+	background-color: white;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	width:210px;
+	z-index: 2;
+}
+.nav2drop a{
+	color: black;
+	padding: 6px 10px;
+	text-decoration: none;
+	display: block;
+	border-top:1px solid #C9C9C9 ;
+}
+.nav2drop a:hover{
+	background-color: #555;
+	color:white;
+}
+.nav-2:hover .nav2drop{
+	display: block;
+}
+.nav3drop{
+	display: none;
+	width: 1205px;
+	height: 670px;
+	border-bottom:2px solid #004094 ;
+	border-top:2px solid #004094 ;
+	position: absolute;
+	background-color: white;
+	margin-left: -580px;
+	z-index: 2;
+}
+.nav3drop1{
+	width: 300px;
+	float: left;
+	height: 670px;
+	border-right: 1px solid #C9C9C9 ;
+}
+.nav3-1top{
+	height:40px ;
+	width:100px ;
+	color: #555555;
+	padding-top: 15px;
+	margin-left: 10px;
+	font-size: 16px;
+}
+.nav3-1second a{
+	color: black;
+	padding: 6px 10px;
+	text-decoration: none;
+	display: block;
+}
+.nav3-1second a:hover{
+	background-color: #555;
+	color:white;
+}
+.nav3drop2{
+	width: 300px;
+	float: left;
+	height: 670px;
+	border-right: 1px solid #C9C9C9 ;
+}
+.nav3-2top{
+	height:40px ;
+	width:100px ;
+	color: #555555;
+	padding-top: 15px;
+	margin-left: 10px;
+	font-size: 16px;
+}
+.nav3-2second a{
+	color: black;
+	padding: 6px 10px;
+	text-decoration: none;
+	display: block;
+}
+.nav3-2second a:hover{
+	background-color: #555;
+	color:white;
+}
+.nav3drop3{
+	width: 300px;
+	float: left;
+	height: 670px;
+	border-right: 1px solid #C9C9C9 ;
+}
+.nav3-3top{
+	height:40px ;
+	width:100px ;
+	color: #555555;
+	padding-top: 15px;
+	margin-left: 10px;
+	font-size: 16px;
+}
+.nav3-3second a{
+	color: black;
+	padding: 6px 10px;
+	text-decoration: none;
+	display: block;
+}
+.nav3-3second a:hover{
+	background-color: #555;
+	color:white;
+}
+.nav3drop4{
+	width: 300px;
+	float: left;
+	height: 670px;
+}
+.nav3-4top{
+	height:40px ;
+	width:100px ;
+	color: #555555;
+	padding-top: 15px;
+	margin-left: 10px;
+	font-size: 16px;
+}
+.nav3-4second a{
+	color: black;
+	padding: 6px 10px;
+	text-decoration: none;
+	display: block;
+}
+.nav3-4second a:hover{
+	background-color: #555;
+	color:white;
+}
+.nav-3:hover .nav3drop{
+	display: block;
+}
+.nav4drop{
+	display: none;
+	position: absolute;
+	background-color: white;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	width:210px;
+	z-index: 2;
+}
+.nav4drop a{
+	color: black;
+	padding: 6px 10px;
+	text-decoration: none;
+	display: block;
+	border-top:1px solid #C9C9C9 ;
+}
+.nav4drop a:hover{
+	background-color: #555;
+	color:white;
+}
+.nav-4:hover .nav4drop{
+	display: block;
+}
+.nav5drop{
+	display: none;
+	position: absolute;
+	background-color: white;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	width:210px;
+	z-index: 2;
+	}
+.nav5drop a{
+	color: black;
+	padding: 6px 10px;
+	text-decoration: none;
+	display: block;
+	border-top:1px solid #C9C9C9 ;
+}
+.nav5drop a:hover{
+	background-color: #555;
+	color:white;
+}
+.nav-5:hover .nav5drop{
+	display: block;
+}
+.nav6drop{
+	display: none;
+	position: absolute;
+	background-color: white;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	width:210px;
+	z-index: 2;
+}
+.nav6drop a{
+	color: black;
+	padding: 6px 10px;
+	text-decoration: none;
+	display: block;
+	border-top:1px solid #C9C9C9 ;
+}
+.nav6drop a:hover{
+	background-color: #555;
+	color:white;
+}
+.nav-6:hover .nav6drop{
+	display: block;
+}
+.nav7drop{
+	display: none;
+	position: absolute;
+	background-color: white;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	width:210px;
+	z-index: 2;
+}
+.nav7drop a{
+	color: black;
+	padding: 6px 10px;
+	text-decoration: none;
+	display: block;
+	border-top:1px solid #C9C9C9 ;
+}
+.nav7drop a:hover{
+	background-color: #555;
+	color:white;
+}
+.nav-7:hover .nav7drop{
+	display: block;
+}
+.nav8drop{
+	display: none;
+	position: absolute;
+	background-color: white;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	width:210px;
+	z-index: 2;
+}
+.nav8drop a{
+	color: black;
+	padding: 6px 10px;
+	text-decoration: none;
+	display: block;
+	border-top:1px solid #C9C9C9 ;
+}
+.nav8drop a:hover{
+	background-color: #555;
+	color:white;
+}
+.nav-8:hover .nav8drop{
+	display: block;
+}
+.nav9drop{
+	display: none;
+	position: absolute;
+	background-color: white;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	width:210px;
+	z-index:2;
+	//margin-left: 500px;
+}
+.nav9drop a{
+	color: black;
+	padding: 6px 10px;
+	text-decoration: none;
+	display: block;
+	border-top:1px solid #C9C9C9 ;
+}
+.nav9drop a:hover{
+	background-color: #555;
+	color:white;
+}
+.nav-9:hover .nav9drop{
+	display: block;
+}
+.col-md-4 a{
+	color: #555;
+}
+.secondSecond1{
+	float: left;
+	margin-left: 10px;
+	width: 76px;
+}
+.second2k{
+	width: 76px;
+	height: 38px;
+	margin-top: 23px;
+}
+.secondxq{
+	width: 76px;
+	height: 19px;
+	background-color: #c9c9c9;
+	text-align: center;
+	color: #004094;
+}
+.secondrq{
+	width: 76px;
+	height: 19px;
+	background-color: #004094;
+	text-align: center;
+	color: white;
+}
+.secondSecond2{
+	margin-left: 100px;
+	margin-top: 16px;
+	width:381.5px ;
+	height: 305px;
+}
+.secondSecond2 a{
+	line-height: 50px;
+	color: #004094;
+}
+tr td a{
+	color: #555;
+}
