@@ -1,0 +1,54 @@
+.headerOne{
+	background-color:#004094 ; 
+ } 
+.headerOne [class*="col-"]{
+    padding-top: 7px;
+    padding-bottom: 7px;
+  }
+.contentTop {
+	  margin: 20px 0 20px 0;
+  }
+.contentTop > h2{
+	color: #004094;
+	font-size: 20px;
+	font-weight: 200
+	color: #004094;
+	display: inline;
+}
+.more{
+	font-weight: 100;
+	color: #004094;
+	font-family: 微软雅黑;
+	float: right;
+}
+.more a:link,
+.more a:visited
+{
+	color: #004094;
+	text-decoration: none;
+}
+.more a:hover,
+.more a:active
+{
+	color: #004094;
+	text-decoration: underline;
+}
+.topWord{
+	font-size: 15px;
+	font-family: 微软雅黑;
+	font-weight: 500;
+	color:#555;
+	
+}
+.topWord a:link,
+.topWord a:visited
+{
+	color: dimgrey;
+	text-decoration: none;
+}
+.topWord a:hover,
+.topWord a:active
+{
+	color: #004094;
+	text-decoration: underline;
+}
