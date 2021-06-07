@@ -22,8 +22,8 @@
 
 
 * * *
-## 保持最新
-当自己 Fork 的仓库 commit 落后于本仓库时，可以点击仓库右上角的 `fetch upstream` 来更新自己的仓库，避免删除重新 Fork 或者使用 rebase 的繁琐操作
+## 保持同步
+当自己 Fork 的仓库 commit 落后于本仓库时，可以点击仓库右上角的 `Fetch upstream` 来同步到自己的仓库，避免删除重新 Fork 或者使用 rebase 的繁琐操作，
 如图所示：
 
 <img src="https://user-images.githubusercontent.com/16754699/121015998-37e6e000-c7ce-11eb-89a1-584c6157adf8.png" width="600">
