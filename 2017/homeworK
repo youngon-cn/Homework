@@ -1,0 +1,210 @@
+<html>
+  <head>
+    <title>年龄提示器</title>
+    <script LANGUAGE="Javascript">
+    <!-- Begin
+      var mm = prompt('What month were you born in?','1-12');
+      var bday = prompt('What day were you born on?','1-31');
+      var byear = prompt('What year were you born in?','1975');
+      var year = new Date();
+      var year2 = year.getYear();
+      var year3 = (year < 2000) ? year2 + 1900 : year2;
+      thedate = new Date();
+      mm2 = thedate.getMonth() + 1;
+      dd2 = thedate.getDate();
+      yy2 = thedate.getYear();
+      
+      if (yy2 < 100) yy2 += 1900
+      yourage = yy2 - byear;
+      if (mm2 < mm) yourage--;
+      if ((mm2 == mm) && (dd2 < bday)) yourage--;
+      
+      TMonth = new Array('January','February','March',
+                         'April','May','June','July',
+                         'August','September','October',
+                         'November','December');
+      CurMonth = mm - 1;
+      bmonth = TMonth[CurMonth];
+      var age2 = yourage + 1;
+      var timerID;
+      var timerRunning = false;
+      var today = new Date();
+      var startday = new Date();
+      var enday = new Date();
+      var secPerDay = 0;
+      var minPerDay = 0;
+      var hourPerDay = 0;
+      var secsLeft = 0;
+      var secsRound = 0;
+      var secsRemain = 0;
+      var minLeft = 0;
+      var minRound = 0;
+      var minRemain = 0;
+      var timeRemain = 0;
+
+      function stopclock()
+      {
+        if(timerRunning) clearTimeout(timerID);
+        timerRunning = false;
+      }
+      
+      function startclock()
+      {
+        stopclock();
+        showtime();
+        showtime1();
+      }
+
+      function showtime()
+      {
+        today = new Date();
+        enday = new Date(""+bmonth+", "+bday+" "+year3+" 00:00");
+        enday.setYear(""+year3+"");
+        secsPerDay = 1000 ;
+        minPerDay = 60 * 1000 ;
+        hoursPerDay = 60 * 60 * 1000;
+        PerDay = 24 * 60 * 60 * 1000;
+        secsLeft = (enday.getTime() - today.getTime()) / minPerDay;
+        secsRound = Math.round(secsLeft);
+        secsRemain = secsLeft - secsRound;
+        secsRemain = (secsRemain < 0) ? secsRemain = 60 - ((secsRound - secsLeft) * 60) : secsRemain = (secsLeft - secsRound) * 60;
+        secsRemain = Math.round(secsRemain);
+        minLeft = ((enday.getTime() - today.getTime()) / hoursPerDay);
+        minRound = Math.round(minLeft);
+        minRemain = minLeft - minRound;
+        minRemain = (minRemain < 0) ? minRemain = 60 - ((minRound - minLeft)  * 60) : minRemain = ((minLeft - minRound) * 60);
+        minRemain = Math.round(minRemain - 0.495);
+        hoursLeft = ((enday.getTime() - today.getTime()) / PerDay);
+        hoursRound = Math.round(hoursLeft);
+        hoursRemain = hoursLeft - hoursRound;
+        hoursRemain = (hoursRemain < 0) ? hoursRemain = 24 - ((hoursRound - hoursLeft)  * 24) : hoursRemain = ((hoursLeft - hoursRound) * 24);
+        hoursRemain = Math.round(hoursRemain - 0.5);
+        daysLeft = ((enday.getTime() - today.getTime()) / PerDay);
+        daysLeft = (daysLeft - 0.5);
+        daysRound = Math.round(daysLeft);
+        daysRemain = daysRound;
+        
+        if (daysRemain == 1) day_rem = " day, "
+        else day_rem = " days, "
+        
+        if (hoursRemain == 1) hour_rem = " hour, "
+        else hour_rem = " hours, "
+
+        if (minRemain == 1) min_rem = " minute, "
+        else min_rem = " minutes, "
+
+        if (secsRemain == 1) sec_rem = " second"
+        else sec_rem = " seconds"
+
+        timeRemain = daysRemain + day_rem + hoursRemain + hour_rem + minRemain + min_rem + secsRemain + sec_rem;
+        document.down.face.value = timeRemain;
+        timerID = setTimeout("showtime()",1000);
+        timerRunning = true;
+        if (daysRemain < 0) year3 = year3 + 1
+      }
+
+      function showtime1()
+      {
+        startday = new Date(""+bmonth+" "+bday+", "+byear+" 00:00 EDT");
+        startday.setYear(""+byear+"");
+        today = new Date();
+        secsPerDay = 1000 ;
+        minPerDay = 60 * 1000 ;
+        hoursPerDay = 60 * 60 * 1000;
+        PerDay = 24 * 60 * 60 * 1000;
+        secsLeft = (today.getTime() - startday.getTime()) / minPerDay;
+        secsRound = Math.round(secsLeft);
+        secsRemain = secsLeft - secsRound;
+        secsRemain = (secsRemain < 0) ? secsRemain = 60 - ((secsRound - secsLeft) * 60) : secsRemain = (secsLeft - secsRound) * 60;
+        secsRemain = Math.round(secsRemain);
+        minLeft = ((today.getTime() - startday.getTime()) / hoursPerDay);
+        minRound = Math.round(minLeft);
+        minRemain = minLeft - minRound;
+        minRemain = (minRemain < 0) ? minRemain = 60 - ((minRound - minLeft) * 60) : minRemain = ((minLeft - minRound) * 60);
+        minRemain = Math.round(minRemain - 0.495);
+        hoursLeft = ((today.getTime() - startday.getTime()) / PerDay);
+        hoursRound = Math.round(hoursLeft);
+        hoursRemain = hoursLeft - hoursRound;
+        hoursRemain = (hoursRemain < 0) ? hoursRemain = 24 - ((hoursRound - hoursLeft) * 24)  : hoursRemain = ((hoursLeft - hoursRound) * 24);
+        hoursRemain = Math.round(hoursRemain - 0.5);
+        daysLeft = ((today.getTime() - startday.getTime()) / PerDay);
+        daysLeft = (daysLeft - 0.5);
+        daysRound = Math.round(daysLeft);
+        daysRemain = daysRound;
+        
+        if (daysRemain == 1) day_rem = " day, "
+        else day_rem = " days, "
+
+        if (hoursRemain == 1) hour_rem = " hour, "
+        else hour_rem = " hours, "
+
+        if (minRemain == 1) min_rem = " minute, "
+        else min_rem = " minutes, "
+
+        if (secsRemain == 1) sec_rem = " second"
+        else sec_rem = " seconds"
+
+        timeRemain = daysRemain + day_rem + hoursRemain + hour_rem + minRemain + min_rem + secsRemain + sec_rem;
+        document.up.face.value = timeRemain;
+        timerID = setTimeout("showtime1()",1000);
+        timerRunning = true;
+      }
+    //  End -->
+    </script>
+  </head>
+
+  <body bgcolor="f9fcb6" onload="startclock()">
+    <center>
+      <form name="down">
+        <script Language="Javascript">
+          document.write("<b>I was born "+bmonth+" "+bday+", "+byear+".  ("+mm+"/"+bday+"/"+byear+")</b>");
+          document.write("<br><br>I am "+yourage+" years old, and will turn "+age2+" in:");
+        </script>
+        <br>
+        <input type="text" name="face" size="47" value="A browser supporting Javascript 1.1+ is needed.">
+      </form>
+      <p>
+      <br>
+      <form name="up">
+        I've been alive for...
+        <br>
+        <input type="text" name="face" size="47" value="A browser supporting Javascript 1.1+ is needed.">
+      </form>
+    </center>
+    <form name=forms>
+      <font size=3>
+        <center> 
+          <div align=center>
+          <p>
+      </font>
+      <font color=red size=3>
+        您已在本站停留了
+      </font>
+      <font color=#80FF80>
+        <br> 
+        <input type=text name=input1 size=10>
+      </font>
+      </p>
+      </div>
+      </center>
+      </font> 
+
+    <script language=javascript><!-- 
+      var sec=0;
+      var min=0;
+      var hou=0;
+      idt=window.setTimeout("update();",1000);
+      
+      function update()
+      {
+        sec++;
+        if(sec==60){sec=0;min+=1;}
+        if(min==60){min=0;hou+=1;} 
+        document.forms.input1.value=hou+"时"+min+"分"+sec+"秒";
+        idt=window.setTimeout("update();",1000);
+      }
+    //--> 
+    </script> 
+    </form>
+  </body>
+</html>
