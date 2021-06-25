@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>九宫格抽奖</title>
+		<link rel="stylesheet"type="text/css"href="./css/抽奖.css"/>
+		
+	</head>
+	<body>
+		<div id="all">
+			<div class="font">抽奖了抽奖了</div>
+			<div id="container">
+				<ul id="list"><!-- 奖品 -->
+					<li>
+						<img src="img/奖品/中国结.webp" />
+						<div class="mask"></div>
+					</li>
+					<li>
+						<img src="img/奖品/夜光熊.webp" />
+						<div class="mask"></div>
+					</li>
+					<li>
+						<img src="img/奖品/大象.webp" />
+						<div class="mask"></div>
+					</li>
+					<li>
+						<img src="img/奖品/巧克力.webp" />
+						<div class="mask"></div>
+					</li>
+					<span id="startbutton" onclick="startlottery()" >开始抽奖</span><!-- 抽奖 -->
+					<li>
+						<img src="img/奖品/平安符.webp" />
+						<div class="mask"></div>
+					</li>
+					<li>
+						<img src="img/奖品/星星杯.webp" />
+						<div class="mask"></div>
+					</li>
+					<li>
+						<img src="img/奖品/笑脸.webp" />
+						<div class="mask"></div>
+					</li>
+					<li>
+						<img src="img/奖品/大礼包.webp"/>
+						<div class="mask"></div>
+					</li>
+				</ul>
+				<div id="message"></div><!-- 输出奖品 -->
+			</div>
+	    </div>
+		<script src="js/抽奖.js"></script>
+		</body>
+</html>

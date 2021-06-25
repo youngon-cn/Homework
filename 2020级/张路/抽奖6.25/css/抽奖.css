@@ -1,0 +1,98 @@
+body{
+	background-color: skyblue;
+}
+*{
+	margin: 0;
+	padding: 0;
+}
+#all{
+	margin: 0 auto;
+	height: auto;
+	width: auto;
+	font-family: arial;
+	padding: 0;
+}
+.font{
+	width: 1263px;
+	height: 20px;
+	color: white;
+	font-size: 18px;
+	font-weight: bold;
+	margin:0  auto;
+	text-align: center;
+	margin-top: 20px;
+}
+	
+#container{
+	width: 330px;
+	height: 330px;
+	margin:0 auto;
+	margin-top: 100px;
+	border:7px solid aqua;
+	border-radius: 10px;
+}
+#list{
+	width: 330px;
+	height: 330px;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+#list li{
+	width: 100px;
+	height: 100px;
+	float: left;
+	line-height: 100px;
+	border-radius: 5px;
+	text-align: center;
+	margin: 1.4%;
+}
+#list span{
+	width: 100px;
+	height: 100px;
+	float: left;
+	line-height: 100px;
+	border-radius: 5px;
+	text-align: center;
+	margin: 1.4%;
+	background-color: cornsilk;
+}
+#list li img{
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+#list li mask{
+	width: 100%;
+	height:100%;
+	background-image: url(../img/奖品/背景.png) no-repeat;
+	background-size: cover;
+	display: none;
+	z-index: 1;
+	opacity: 0.5;
+}
+#list span:hover{
+	cursor: pointer;
+	color: orange;
+	font-size: 18px;
+}
+#list .active .mask{
+	display: block;
+}
+#startbutton{
+	background-color:#ff3a59;
+	color: orange;
+	font-size: 18px;
+}
+#message{
+	width: 330px;
+	height: 50px;
+	color: white;
+	background-color: #000000;
+	font-size: 18px;
+	text-align: center;
+	line-height: 32px;
+	margin-top: -420px;
+	display: none;
+	padding-top: 16px;
+}
