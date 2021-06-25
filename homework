@@ -1,0 +1,40 @@
+<html>
+  <head>
+    <title>带按钮开关的Form时钟</title>
+  </head>
+  
+  <body bgcolor="aebcdf">
+    <script language="JavaScript">
+      var enabled=0; 
+      function Time_Set()
+      { 
+        TM = window.setTimeout( "Time_Set()", 1000 ); 
+        var today = new Date(); 
+        document.clock.disp.value = today.toLocaleString();
+      }
+    </script>
+
+    <form name="clock" style="position:absolute;left:50;top:50; z-index:5;">
+      <input type="text" name="disp" value="" size=30 onFocus="this.blur()" >
+        <br><br>
+      <input type="button" name="rad" value="off" onClick="
+        if( enabled==1 ) 
+        {
+          document.clock.disp.value='';
+          clearTimeout( TM ); 
+          enabled = 0;
+        }
+      " checked>
+      关
+      <font color="#FFFF99"> </font> 
+      <input type="button" name="rad" value=" on" onClick="
+        if( enabled == 0 ) 
+        {
+          var TM = setTimeout( 'Time_Set()', 1000 );
+          enabled = 1; }
+      " >
+      开
+      <font color="#FFFF99"> </font> 
+    </form>
+  </body>
+</html>
